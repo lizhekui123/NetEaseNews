@@ -1,4 +1,4 @@
-package com.lanou3g.dllo.neteasenews.ui;
+package com.lanou3g.dllo.neteasenews.ui.fragment;
 
 import android.content.Context;
 import android.content.Intent;

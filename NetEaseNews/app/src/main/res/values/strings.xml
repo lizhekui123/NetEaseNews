@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">NetEaseNews</string>
+    <string name="app_name">网易新闻</string>
+    <string name="news">新闻</string>
+    <string name="live">直播</string>
+    <string name="topic">话题</string>
+    <string name="me">我</string>
 </resources>
