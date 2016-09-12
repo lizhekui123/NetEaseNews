@@ -5,10 +5,11 @@ import com.lanou3g.dllo.neteasenews.R;
 /**
  * Created by dllo on 16/9/10.
  */
-public class TabTopicFragment extends AbsBaseFragment{
+public class TopicTabFollowFragment extends AbsBaseFragment{
+
     @Override
     protected int setLayout() {
-        return R.layout.fragment_topic_topic;
+        return R.layout.fragment_topic_follow;
     }
 
     @Override

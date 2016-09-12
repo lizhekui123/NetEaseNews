@@ -22,8 +22,9 @@
             android:textColor="@android:color/white" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="6dp"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@id/me_set_tv"
             android:src="@mipmap/me_set_btn" />
@@ -88,8 +89,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginRight="10dp"
                 android:scaleType="fitXY"
                 android:src="@mipmap/a93" />
@@ -116,8 +117,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginRight="10dp"
                 android:scaleType="fitXY"
                 android:src="@mipmap/a91" />
@@ -144,8 +145,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_marginRight="10dp"
                 android:scaleType="fitXY"
                 android:src="@mipmap/a8z" />

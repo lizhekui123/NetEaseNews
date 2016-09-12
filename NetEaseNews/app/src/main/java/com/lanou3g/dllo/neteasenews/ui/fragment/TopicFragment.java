@@ -32,9 +32,9 @@ public class TopicFragment extends AbsBaseFragment{
     @Override
     protected void initDatas() {
         List<Fragment> datas = new ArrayList<>();
-        datas.add(new TabQuestionBarFragment());
-        datas.add(new TabTopicFragment());
-        datas.add(new TabFollowFragment());
+        datas.add(new TopicTabQuestionBarFragment());
+        datas.add(new TopicTabTopicFragment());
+        datas.add(new TopicTabFollowFragment());
         TopicTabAdapter adapter = new TopicTabAdapter(getChildFragmentManager(),datas);
         topicVp.setAdapter(adapter);
         topicTl.setupWithViewPager(topicVp);
