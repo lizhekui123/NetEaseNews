@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 
 import com.lanou3g.dllo.neteasenews.R;
 import com.lanou3g.dllo.neteasenews.ui.adapter.LiveTabAdapter;
@@ -18,6 +17,11 @@ import java.util.List;
 public class LiveFragment extends AbsBaseFragment{
     private TabLayout liveTl;
     private ViewPager liveVp;
+    private List<Fragment> fragments;
+    private List<String> titles;
+    private ArrayList<String> hotUrl;
+    private ArrayList<String> classifiedUrl;
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_live;
@@ -31,17 +35,27 @@ public class LiveFragment extends AbsBaseFragment{
 
     @Override
     protected void initDatas() {
-        List<Fragment> datas = new ArrayList<>();
-        datas.add(new LiveTabHotFragment());
-        datas.add(new LiveTabClassifiedFragment());
-        LiveTabAdapter adapter = new LiveTabAdapter(getChildFragmentManager(),datas);
+        buildData();
+        LiveTabAdapter adapter = new LiveTabAdapter(getChildFragmentManager());
+        adapter.setTitles(titles);
+        adapter.setFragments(fragments);
         liveVp.setAdapter(adapter);
         liveTl.setupWithViewPager(liveVp);
-        View liveTabHotView = getLayoutInflater(null).inflate(R.layout.fragment_live_hot, null);
-        liveTl.getTabAt(0).setText("热门");
-        View liveTabClassifiedView = getLayoutInflater(null).inflate(R.layout.fragment_live_classified, null);
-        liveTl.getTabAt(1).setText("分类");
         liveTl.setSelectedTabIndicatorColor(Color.WHITE);
         liveTl.setTabTextColors(Color.rgb(255, 192, 203),Color.WHITE);
+    }
+
+    private void buildData() {
+        fragments = new ArrayList<>();
+        titles = new ArrayList<>();
+        hotUrl = new ArrayList<>();
+        titles.add("热门");
+        titles.add("分类");
+        hotUrl.add("http://data.live.126.net/livechannel/previewlist.json");
+        fragments.add(LiveTabFragment.newInstance(hotUrl));
+        classifiedUrl = new ArrayList<>();
+        classifiedUrl.add("http://data.live.126.net/livechannel/classifylist.json");
+        classifiedUrl.add("http://data.live.126.net/livechannel/classify/3/1.json");
+        fragments.add(LiveTabFragment.newInstance(classifiedUrl));
     }
 }

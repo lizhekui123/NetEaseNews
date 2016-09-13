@@ -215,7 +215,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="我关注的" />
+                    android:text="我的粉丝" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </RelativeLayout>

@@ -9,12 +9,12 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/10.
  */
-public class LiveTabAdapter extends FragmentPagerAdapter{
+public class NewsTabAdapter extends FragmentPagerAdapter{
 
     private List<Fragment> fragments;
     private List<String> titles;
 
-    public LiveTabAdapter(FragmentManager fm) {
+    public NewsTabAdapter(FragmentManager fm) {
         super(fm);
     }
     public void setFragments(List<Fragment> fragments) {
