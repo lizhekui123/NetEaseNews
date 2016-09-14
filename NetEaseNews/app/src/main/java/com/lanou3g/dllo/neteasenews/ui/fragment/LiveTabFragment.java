@@ -1,6 +1,7 @@
 package com.lanou3g.dllo.neteasenews.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.lanou3g.dllo.neteasenews.R;
@@ -38,6 +39,7 @@ public class LiveTabFragment extends AbsBaseFragment{
         for (int i = 0; i < list.size(); i++) {
             str = str + list.get(i) + "\n";
         }
+        Log.d("LiveTabFragment", str);
         textView.setText(str);
     }
 }

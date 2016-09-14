@@ -8,8 +8,8 @@ import com.lanou3g.dllo.neteasenews.ui.app.NetEaseNewsApp;
  * Created by dllo on 16/9/8.
  * Toast的工具类
  */
-public final class T {
-    private T() {}
+public final class ToastTool {
+    private ToastTool() {}
     private static boolean isDebug = true;
     public static void shortMsg (String msg){
         if (isDebug) {

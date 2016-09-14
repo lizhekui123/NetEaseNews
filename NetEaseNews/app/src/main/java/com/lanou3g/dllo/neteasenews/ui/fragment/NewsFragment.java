@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
 
 import com.lanou3g.dllo.neteasenews.R;
+import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.ui.adapter.NewsTabAdapter;
 
 import java.util.ArrayList;
@@ -58,27 +59,27 @@ public class NewsFragment extends AbsBaseFragment{
         titles = new ArrayList<>();
         tabUrl = new ArrayList<>();
         titles.add("头条");
-        tabUrl.add("http://c.3g.163.com/recommend/getSubDocPic?tid=T1348647909107&from=toutiao&size=20");
+        tabUrl.add(UrlValues.HEADLINENEWSURL);
         titles.add("精选");
-        tabUrl.add("http://c.3g.163.com/nc/article/list/T1467284926140/0-20.html");
+        tabUrl.add(UrlValues.SELECTEDNEWSURL);
         titles.add("娱乐");
-        tabUrl.add("http://c.3g.163.com/nc/article/list/T1348648517839/0-20.html");
+        tabUrl.add(UrlValues.ENTERTAINMENTNEWSURL);
         titles.add("体育");
-        tabUrl.add("http://c.3g.163.com/nc/article/list/T1348649079062/0-20.html");
+        tabUrl.add(UrlValues.SPORTSNEWSURL);
         titles.add("网易号");
-        tabUrl.add("http://c.3g.163.com/recommend/getSubDocPic?from=netease_h&size=20");
+        tabUrl.add(UrlValues.NETEASENUMNEWSURL);
         titles.add("视频");
-        tabUrl.add("http://c.3g.163.com/recommend/getChanListNews?channel=T1457068979049&size=10");
+        tabUrl.add(UrlValues.VIDEONEWSURL);
         titles.add("财经");
-        tabUrl.add("http://c.3g.163.com/nc/article/list/T1348648756099/0-20.html");
+        tabUrl.add(UrlValues.FINANCIALNEWSURL);
         titles.add("科技");
-        tabUrl.add("http://c.3g.163.com/nc/article/list/T1348649580692/0-20.html");
+        tabUrl.add(UrlValues.TECHNEWSURL);
         titles.add("汽车");
-        tabUrl.add("http://c.3g.163.com/nc/auto/list/5YWo5Zu9/0-20.html");
+        tabUrl.add(UrlValues.AUTONEWSURL);
         titles.add("时尚");
-        tabUrl.add("http://c.3g.163.com/nc/article/list/T1348650593803/0-20.html");
+        tabUrl.add(UrlValues.FASHIONNEWSURL);
         titles.add("图片");
-        tabUrl.add("http://c.3g.163.com/photo/api/list/0096/4GJ60096.json");
+        tabUrl.add(UrlValues.PHOTONEWSURL);
         for (int i = 0; i < titles.size(); i++) {
             fragments.add(NewsTabFragment.newInstance(tabUrl.get(i)));
         }
