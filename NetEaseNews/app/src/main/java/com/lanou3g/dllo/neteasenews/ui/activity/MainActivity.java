@@ -5,10 +5,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import com.lanou3g.dllo.neteasenews.R;
-import com.lanou3g.dllo.neteasenews.ui.fragment.LiveFragment;
-import com.lanou3g.dllo.neteasenews.ui.fragment.MeFragment;
-import com.lanou3g.dllo.neteasenews.ui.fragment.NewsFragment;
-import com.lanou3g.dllo.neteasenews.ui.fragment.TopicFragment;
+import com.lanou3g.dllo.neteasenews.ui.fragment.live.LiveFragment;
+import com.lanou3g.dllo.neteasenews.ui.fragment.me.MeFragment;
+import com.lanou3g.dllo.neteasenews.ui.fragment.news.NewsFragment;
+import com.lanou3g.dllo.neteasenews.ui.fragment.topic.TopicFragment;
 
 public class MainActivity extends AbsBaseActivity {
     private RadioGroup radioGroup;
@@ -33,16 +33,16 @@ public class MainActivity extends AbsBaseActivity {
                 FragmentTransaction transaction = manager.beginTransaction();
                 switch (checkedId){
                     case R.id.main_news_rb:
-                        transaction.replace(R.id.main_replace_view, new NewsFragment());
+                        transaction.replace(R.id.main_replace_view, NewsFragment.newInstance());
                         break;
                     case R.id.main_live_rb:
-                        transaction.replace(R.id.main_replace_view, new LiveFragment());
+                        transaction.replace(R.id.main_replace_view, LiveFragment.newInstance());
                         break;
                     case R.id.main_topic_rb:
-                        transaction.replace(R.id.main_replace_view, new TopicFragment());
+                        transaction.replace(R.id.main_replace_view, TopicFragment.newInstance());
                         break;
                     case R.id.main_me_rb:
-                        transaction.replace(R.id.main_replace_view, new MeFragment());
+                        transaction.replace(R.id.main_replace_view, MeFragment.newInstance());
                         break;
                 }
                 transaction.commit();

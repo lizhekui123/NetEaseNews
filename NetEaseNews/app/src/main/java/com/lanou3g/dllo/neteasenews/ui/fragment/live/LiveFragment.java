@@ -1,4 +1,4 @@
-package com.lanou3g.dllo.neteasenews.ui.fragment;
+package com.lanou3g.dllo.neteasenews.ui.fragment.live;
 
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
@@ -6,21 +6,29 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.lanou3g.dllo.neteasenews.R;
+import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.ui.adapter.LiveTabAdapter;
+import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 直播页面
  */
-public class LiveFragment extends AbsBaseFragment{
+public class LiveFragment extends AbsBaseFragment {
     private TabLayout liveTl;
     private ViewPager liveVp;
     private List<Fragment> fragments;
     private List<String> titles;
-    private ArrayList<String> hotUrl;
-    private ArrayList<String> classifiedUrl;
+    private ArrayList<String> tabUrl;
+
+
+    public static LiveFragment newInstance() {
+        LiveFragment fragment = new LiveFragment();
+        return fragment;
+    }
 
     @Override
     protected int setLayout() {
@@ -48,14 +56,13 @@ public class LiveFragment extends AbsBaseFragment{
     private void buildData() {
         fragments = new ArrayList<>();
         titles = new ArrayList<>();
-        hotUrl = new ArrayList<>();
+        tabUrl = new ArrayList<>();
         titles.add("热门");
         titles.add("分类");
-        hotUrl.add("http://data.live.126.net/livechannel/previewlist.json");
-        fragments.add(LiveTabFragment.newInstance(hotUrl));
-        classifiedUrl = new ArrayList<>();
-        classifiedUrl.add("http://data.live.126.net/livechannel/classifylist.json");
-        classifiedUrl.add("http://data.live.126.net/livechannel/classify/3/1.json");
-        fragments.add(LiveTabFragment.newInstance(classifiedUrl));
+        tabUrl.add(UrlValues.HOTLIVEURL);
+        tabUrl.add(UrlValues.CLASSIFIEDCONTENTLIVEURL);
+        for (int i = 0; i < titles.size(); i++) {
+            fragments.add(LiveTabFragment.newInstance(tabUrl.get(i)));
+        }
     }
 }

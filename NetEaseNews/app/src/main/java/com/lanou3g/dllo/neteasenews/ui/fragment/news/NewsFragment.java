@@ -1,4 +1,4 @@
-package com.lanou3g.dllo.neteasenews.ui.fragment;
+package com.lanou3g.dllo.neteasenews.ui.fragment.news;
 
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -10,23 +10,28 @@ import android.widget.ImageView;
 import com.lanou3g.dllo.neteasenews.R;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.ui.adapter.NewsTabAdapter;
+import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 新闻页面
  */
-public class NewsFragment extends AbsBaseFragment{
+public class NewsFragment extends AbsBaseFragment {
     private ImageView newsLiveIv;
-
-    private String menuUrl = "http://c.m.163.com/nc/topicset/android/subscribe/manage/listspecial.html";
-
     private ViewPager newsVp;
     private TabLayout newsTl;
     private List<Fragment> fragments;
     private List<String> titles;
     private ArrayList<String> tabUrl;
+
+    public static NewsFragment newInstance() {
+        NewsFragment fragment = new NewsFragment();
+        return fragment;
+    }
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_news;

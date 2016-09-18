@@ -1,17 +1,31 @@
-package com.lanou3g.dllo.neteasenews.ui.fragment;
+package com.lanou3g.dllo.neteasenews.ui.fragment.topic;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import com.lanou3g.dllo.neteasenews.R;
+import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
+import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 话题-话题页面
  */
-public class TopicTabTopicFragment extends AbsBaseFragment{
-    private String headUrl = "http://c.m.163.com/recommend/getChanRecomNews?channel=T1460094487214&size=5";
-    private String dataUrl = "http://topic.comment.163.com/topic/list/subject/0-10.html";
+public class TopicTabTopicFragment extends AbsBaseFragment {
+    private String headUrl = UrlValues.TOPICRECOMURL;
+    private String dataUrl = UrlValues.TOPICCONTENTURL;
+
+    public static TopicTabTopicFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        TopicTabTopicFragment fragment = new TopicTabTopicFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+    
     @Override
     protected int setLayout() {
         return R.layout.fragment_topic_topic;

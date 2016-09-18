@@ -12,6 +12,15 @@ public class ScreenSizeUtil {
     public enum ScreenState {
         WIDTH,HEIGHT
     }
+
+    /**
+     * 获取屏幕尺寸的方法
+     * @param context 就是context
+     * @param state 枚举: WIDTH和HEIGHT分别代表两种状态,分别为宽和高
+     * @return 在state为WIDTH时,返回宽度metrics.widthPixels;
+     *         state为WIDTH时,返回高度metrics.heightPixels;
+     *         默认返回metrics.heightPixels.
+     */
     public static int getScreenSize(Context context, ScreenState state){
         WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics metrics = new DisplayMetrics();

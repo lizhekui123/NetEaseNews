@@ -9,6 +9,7 @@ import com.lanou3g.dllo.neteasenews.ui.app.NetEaseNewsApp;
 
 /**
  * Created by dllo on 16/9/8.
+ * 网络请求类
  */
 public class VolleyInstance {
 

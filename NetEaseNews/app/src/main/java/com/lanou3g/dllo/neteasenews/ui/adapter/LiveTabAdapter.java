@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 直播Tab适配器
  */
 public class LiveTabAdapter extends FragmentPagerAdapter{
 

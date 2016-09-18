@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
     >
     <FrameLayout
         android:id="@+id/main_replace_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>=
+        android:layout_weight="1"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -29,6 +30,7 @@
             android:button="@null"
             android:text="@string/news"
             android:textColor="@drawable/selector_main_btn_color"
+            android:textSize="10sp"
             android:drawableTop="@drawable/selector_news_btn"
             android:checked="false" />
         <RadioButton
@@ -40,6 +42,7 @@
             android:button="@null"
             android:text="@string/live"
             android:textColor="@drawable/selector_main_btn_color"
+            android:textSize="10sp"
             android:drawableTop="@drawable/selector_live_btn"/>
         <RadioButton
             android:id="@+id/main_topic_rb"
@@ -50,6 +53,7 @@
             android:button="@null"
             android:text="@string/topic"
             android:textColor="@drawable/selector_main_btn_color"
+            android:textSize="10sp"
             android:drawableTop="@drawable/selector_topic_btn"/>
         <RadioButton
             android:id="@+id/main_me_rb"
@@ -60,7 +64,9 @@
             android:button="@null"
             android:text="@string/me"
             android:textColor="@drawable/selector_main_btn_color"
-            android:drawableTop="@drawable/selector_me_btn"/>
+            android:textSize="10sp"
+            android:drawableTop="@drawable/selector_me_btn"
+            />
     </RadioGroup>
 
 </LinearLayout>
