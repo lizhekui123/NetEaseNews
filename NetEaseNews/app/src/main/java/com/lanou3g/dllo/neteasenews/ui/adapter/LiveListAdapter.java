@@ -21,7 +21,6 @@ import java.util.List;
  */
 public class LiveListAdapter extends BaseAdapter{
     private Context context;
-    private String url;
     private List<LiveBean.LiveReviewBean> datas;
 
     public void setDatas(List<LiveBean.LiveReviewBean> datas) {
@@ -50,7 +49,7 @@ public class LiveListAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LiveItemViewHolder holder;
+        LiveItemViewHolder holder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_live_simple,parent,false);
             int height = ScreenSizeUtil.getScreenSize(context, ScreenSizeUtil.ScreenState.HEIGHT);

@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">网易新闻</string>
+
+    <!--首页-->
     <string name="news">新闻</string>
     <string name="live">直播</string>
     <string name="topic">话题</string>
     <string name="me">我</string>
+
+    <!--话题页面-->
+    <string name="topic_selected_qb">精选问吧推荐</string>
+    <string name="topic_more">更多</string>
 </resources>

@@ -2,25 +2,34 @@ package com.lanou3g.dllo.neteasenews.ui.fragment.topic;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.lanou3g.dllo.neteasenews.R;
+import com.lanou3g.dllo.neteasenews.model.bean.TopicQBBean;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
+import com.lanou3g.dllo.neteasenews.ui.adapter.TopicQBListAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
+
+import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
  * 话题-问吧页面
  */
 public class TopicTabQuestionBarFragment extends AbsBaseFragment {
+
+    private ListView listView;
+    private TopicQBListAdapter adapter;
+
     private String menuUrl = UrlValues.TOPICQUESTIONBARMENUURL;
     private String dataUrl = UrlValues.TOPICQUESTIONBARCONTENTURL;
 
     public static TopicTabQuestionBarFragment newInstance() {
         
         Bundle args = new Bundle();
-        
         TopicTabQuestionBarFragment fragment = new TopicTabQuestionBarFragment();
         fragment.setArguments(args);
         return fragment;
@@ -33,6 +42,9 @@ public class TopicTabQuestionBarFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
+        listView = byView(R.id.topic_qb_lv);
+        adapter = new TopicQBListAdapter(context);
+        listView.setAdapter(adapter);
     }
 
     @Override
@@ -40,7 +52,7 @@ public class TopicTabQuestionBarFragment extends AbsBaseFragment {
         VolleyInstance.getInstance().startRequest(menuUrl, new VolleyResult() {
             @Override
             public void success(String resultStr) {
-                Log.d("QuestionBar","menu" + resultStr);
+
             }
 
             @Override
@@ -51,7 +63,11 @@ public class TopicTabQuestionBarFragment extends AbsBaseFragment {
         VolleyInstance.getInstance().startRequest(dataUrl, new VolleyResult() {
             @Override
             public void success(String resultStr) {
-                Log.d("QuestionBar", "data" + resultStr);
+                Gson gson = new Gson();
+                TopicQBBean bean = gson.fromJson(resultStr,TopicQBBean.class);
+                Log.d("TopicTabQuestionBarFrag", "bean:" + bean);
+                List<TopicQBBean.DataBean.ExpertListBean> datas = bean.getData().getExpertList();
+                adapter.setDatas(datas);
             }
 
             @Override

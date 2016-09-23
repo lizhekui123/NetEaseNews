@@ -7,5 +7,9 @@
     <color name="color_main_btn_text_normal">#888888</color>
     <color name="color_me_login_normal">#ffffff</color>
     <color name="color_me_login_pressed">#FFC0CB</color>
+    <color name="color_title_tv">#000</color>
+    <color name="color_content_tv">#888</color>
+    <color name="color_type_tv">#14b8ef</color>
+    <color name="color_line">#888</color>
 
 </resources>
