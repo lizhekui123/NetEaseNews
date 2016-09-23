@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="match_parent">
     <ImageView
         android:id="@+id/item_live_iv"
         android:layout_width="match_parent"
@@ -13,22 +13,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="bottom"
-        android:layout_margin="10dp">
+        android:layout_marginLeft="@dimen/item_margin"
+        android:layout_marginRight="@dimen/item_margin">
         <TextView
             android:id="@+id/item_live_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="5dp"
             android:maxLines="1"
             android:ellipsize="end"
             android:text="直播标题"
             android:textColor="#fff"
-            android:textSize="20sp"/>
+            android:textSize="16sp"/>
         <ImageView
             android:id="@+id/item_live_state_iv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_height="18dp"
+            android:scaleType="fitStart"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
             android:src="@mipmap/a60"/>
     </LinearLayout>
     <View

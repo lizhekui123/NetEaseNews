@@ -10,4 +10,6 @@
     <!--话题页面-->
     <string name="topic_selected_qb">精选问吧推荐</string>
     <string name="topic_more">更多</string>
+    <string name="topic_follow_title">您关注的话题与问吧会出现在这里!</string>
+    <string name="topic_to_follow">去关注</string>
 </resources>

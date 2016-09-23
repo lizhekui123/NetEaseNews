@@ -31,7 +31,9 @@
     <dimen name="item_topic_head_tv_size">15sp</dimen>
     <dimen name="item_topic_three_pic_size">100dp</dimen>
     <!--关注-->
-
+    <dimen name="item_topic_line_margin">15dp</dimen>
+    <dimen name="topic_to_follow_padding">10dp</dimen>
+    <dimen name="topic_follow_add_btn_size">25dp</dimen>
     <!--我页面-->
 
 </resources>

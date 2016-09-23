@@ -29,15 +29,17 @@ public class TopicTabTopicFragment extends AbsBaseFragment {
     private String dataUrl = UrlValues.TOPICCONTENTURL;
     private ArrayList datas = new ArrayList();
     private List<TopicTopicListAdapter.TopicTpItemType> types = new ArrayList<>();
+    private boolean hasheader = false;
+    private boolean hascontent = false;
 
     public static TopicTabTopicFragment newInstance() {
-        
+
         Bundle args = new Bundle();
         TopicTabTopicFragment fragment = new TopicTabTopicFragment();
         fragment.setArguments(args);
         return fragment;
     }
-    
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_topic_topic;
@@ -57,10 +59,15 @@ public class TopicTabTopicFragment extends AbsBaseFragment {
             public void success(String resultStr) {
                 Log.d("TopicTabTopicFragment", "head" + resultStr);
                 Gson gson = new Gson();
-                TopicTpBean bean = gson.fromJson(resultStr,TopicTpBean.class);
+                TopicTpBean bean = gson.fromJson(resultStr, TopicTpBean.class);
                 Log.d("TopicTabTopicFragment", "bean:" + bean.get话题().get(1).getTopicName());
-                datas.add(bean.get话题());
-                types.add(TopicTopicListAdapter.TopicTpItemType.HEADER);
+                datas.add(0,bean.get话题());
+                types.add(0,TopicTopicListAdapter.TopicTpItemType.HEADER);
+                hasheader = true;
+                if (hascontent) {
+                    adapter.setDatas(datas, types);
+                    hascontent = false;
+                }
             }
 
             @Override
@@ -73,7 +80,7 @@ public class TopicTabTopicFragment extends AbsBaseFragment {
             public void success(String resultStr) {
                 Log.d("TopicTabTopicFragment", "data" + resultStr);
                 Gson gson = new Gson();
-                TopicTpBean tpbean = gson.fromJson(resultStr,TopicTpBean.class);
+                TopicTpBean tpbean = gson.fromJson(resultStr, TopicTpBean.class);
                 List<TopicTpBean.DataBean.SubjectListBean> list = tpbean.getData().getSubjectList();
                 for (int i = 0; i < list.size(); i++) {
                     TopicTpBean.DataBean.SubjectListBean bean = list.get(i);
@@ -81,18 +88,22 @@ public class TopicTabTopicFragment extends AbsBaseFragment {
                      * type == 0,无图
                      * type == 1,三图
                      */
-                    if (bean.getType() == 0){
+                    if (bean.getType() == 0) {
                         datas.add(bean);
                         types.add(TopicTopicListAdapter.TopicTpItemType.TEXT);
-                    } else if(bean.getType() == 1){
+                    } else if (bean.getType() == 1) {
                         datas.add(bean);
                         types.add(TopicTopicListAdapter.TopicTpItemType.THREEPIC);
                     }
                 }
                 List<TopicTpBean.DataBean.RecomendExpertBean.ExpertListBean> dpList = tpbean.getData().getRecomendExpert().getExpertList();
-                datas.add(dpList);
-                types.add(TopicTopicListAdapter.TopicTpItemType.DP);
-                adapter.setDatas(datas,types);
+                datas.add(4,dpList);
+                types.add(4,TopicTopicListAdapter.TopicTpItemType.DP);
+                hascontent = true;
+                if (hasheader) {
+                    adapter.setDatas(datas, types);
+                    hasheader = false;
+                }
             }
 
             @Override
@@ -102,3 +113,4 @@ public class TopicTabTopicFragment extends AbsBaseFragment {
         });
     }
 }
+

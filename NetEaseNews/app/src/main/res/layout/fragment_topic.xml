@@ -5,7 +5,7 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="36dp"
         android:background="@color/color_main_btn_text_selected">
         <android.support.design.widget.TabLayout
             android:id="@+id/topic_tl"
@@ -14,15 +14,18 @@
             android:layout_marginLeft="10dp"/>
         <ImageView
             android:id="@+id/topic_login_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="16dp"
+            android:scaleType="fitXY"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
             android:src="@mipmap/topic_login_btn"
             />
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:scaleType="fitXY"
             android:layout_toLeftOf="@id/topic_login_iv"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.lanou3g.dllo.neteasenews.R;
 import com.lanou3g.dllo.neteasenews.model.bean.TopicTpBean;
+import com.lanou3g.dllo.neteasenews.tools.StringTool;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,6 +30,10 @@ public class TopicTopicListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private ArrayList datas = new ArrayList();
     private List<TopicTpItemType> types = new ArrayList<>();
+    private static final int TYPEHEADER = 0;
+    private static final int TYPEDP = 1;
+    private static final int TYPETEXT = 2;
+    private static final int TYPETHREEPIC = 3;
 
 
     public enum TopicTpItemType {
@@ -47,21 +52,13 @@ public class TopicTopicListAdapter extends BaseAdapter {
         this.context = context;
     }
 
-
-//    private boolean hasData() {
-//        return datas.size() > 0 && datas != null;
-//    }
-
-
     @Override
     public int getCount() {
-//        return hasData() ? datas.size() : 0;
         return datas == null ? 0 : datas.size();
     }
 
     @Override
     public Object getItem(int position) {
-//        return hasData() ? datas.get(position) : null;
         return datas == null ? null : datas.get(position);
     }
 
@@ -71,31 +68,50 @@ public class TopicTopicListAdapter extends BaseAdapter {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        TopicTpItemType it = types.get(position);
+        if (it == TopicTpItemType.HEADER) {
+            return TYPEHEADER;
+        } else if (it == TopicTpItemType.DP){
+            return TYPEDP;
+        } else if (it == TopicTpItemType.TEXT){
+            return TYPETEXT;
+        } else {
+            return TYPETHREEPIC;
+        }
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 4;
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         HeaderHolder headerHolder = null;
         DPHolder dpHolder = null;
         ContentTextHolder textHolder = null;
         ContentThreePicHolder threePicHolder = null;
-        TopicTpItemType type = types.get(position);
+        int type = getItemViewType(position);
 
         if (convertView == null) {
             switch (type) {
-                case HEADER:
+                case TYPEHEADER:
                     convertView = LayoutInflater.from(context).inflate(R.layout.item_topic_header, parent, false);
                     headerHolder = new HeaderHolder(convertView);
                     convertView.setTag(headerHolder);
                     break;
-                case DP:
+                case TYPEDP:
                     convertView = LayoutInflater.from(context).inflate(R.layout.item_topic_dp, parent, false);
                     dpHolder = new DPHolder(convertView);
                     convertView.setTag(dpHolder);
                     break;
-                case TEXT:
+                case TYPETEXT:
                     convertView = LayoutInflater.from(context).inflate(R.layout.item_topic_simple,parent,false);
                     textHolder = new ContentTextHolder(convertView);
                     convertView.setTag(textHolder);
                     break;
-                case THREEPIC:
+                case TYPETHREEPIC:
                     convertView = LayoutInflater.from(context).inflate(R.layout.item_topic_three_pic, parent, false);
                     threePicHolder = new ContentThreePicHolder(convertView);
                     convertView.setTag(threePicHolder);
@@ -103,114 +119,85 @@ public class TopicTopicListAdapter extends BaseAdapter {
             }
         } else {
             switch (type) {
-                case HEADER:
+                case TYPEHEADER:
                     headerHolder = (HeaderHolder) convertView.getTag();
                     break;
-                case DP:
+                case TYPEDP:
                     dpHolder = (DPHolder) convertView.getTag();
                     break;
-                case TEXT:
+                case TYPETEXT:
                     textHolder = (ContentTextHolder) convertView.getTag();
                     break;
-                case THREEPIC:
+                case TYPETHREEPIC:
                     threePicHolder = (ContentThreePicHolder) convertView.getTag();
                     break;
             }
         }
         switch (type) {
-            case HEADER:
+            case TYPEHEADER:
                 List<TopicTpBean.话题Bean> headList = (List<TopicTpBean.话题Bean>) datas.get(position);
                 Log.d("TopicTopicListAdapter", "headList:" + headList);
                 Picasso.with(context).load(headList.get(0).getPicUrl()).into(headerHolder.headFirstIv);
-                headerHolder.headFirstTv.setText(doTitleText(headList.get(0).getTopicName()));
+                headerHolder.headFirstTv.setText(StringTool.doTitleText(headList.get(0).getTopicName()));
                 Picasso.with(context).load(headList.get(1).getPicUrl()).into(headerHolder.headSecondIv);
-                headerHolder.headSecondTv.setText(doTitleText(headList.get(1).getTopicName()));
+                headerHolder.headSecondTv.setText(StringTool.doTitleText(headList.get(1).getTopicName()));
                 Picasso.with(context).load(headList.get(2).getPicUrl()).into(headerHolder.headThirdIv);
-                headerHolder.headThirdTv.setText(doTitleText(headList.get(2).getTopicName()));
+                headerHolder.headThirdTv.setText(StringTool.doTitleText(headList.get(2).getTopicName()));
                 Picasso.with(context).load(headList.get(3).getPicUrl()).into(headerHolder.headFourthIv);
-                headerHolder.headFourthTv.setText(doTitleText(headList.get(3).getTopicName()));
+                headerHolder.headFourthTv.setText(StringTool.doTitleText(headList.get(3).getTopicName()));
                 Picasso.with(context).load(headList.get(4).getPicUrl()).into(headerHolder.headFifthIv);
-                headerHolder.headFifthTv.setText(doTitleText(headList.get(4).getTopicName()));
+                headerHolder.headFifthTv.setText(StringTool.doTitleText(headList.get(4).getTopicName()));
                 break;
-            case DP:
+            case TYPEDP:
                 List<TopicTpBean.DataBean.RecomendExpertBean.ExpertListBean> dpList =
                         (List<TopicTpBean.DataBean.RecomendExpertBean.ExpertListBean>) datas.get(position);
                 Log.d("TopicTopicListAdapter", "dpList:" + dpList);
                 Picasso.with(context).load(dpList.get(0).getHeadpicurl()).into(dpHolder.dpFirstDpCiv);
                 dpHolder.dpFirstNameTv.setText(dpList.get(0).getName());
-                dpHolder.dpFirstFollowNumTv.setText(doFollowNumText(dpList.get(0).getConcernCount()));
+                dpHolder.dpFirstFollowNumTv.setText(StringTool.doFollowNumText(dpList.get(0).getConcernCount()));
                 Picasso.with(context).load(dpList.get(1).getHeadpicurl()).into(dpHolder.dpSecondDpCiv);
                 dpHolder.dpSecondNameTv.setText(dpList.get(1).getName());
-                dpHolder.dpSecondFollowNumTv.setText(doFollowNumText(dpList.get(1).getConcernCount()));
+                dpHolder.dpSecondFollowNumTv.setText(StringTool.doFollowNumText(dpList.get(1).getConcernCount()));
                 Picasso.with(context).load(dpList.get(2).getHeadpicurl()).into(dpHolder.dpThirdDpCiv);
                 dpHolder.dpThirdNameTv.setText(dpList.get(2).getName());
-                dpHolder.dpThirdFollowNumTv.setText(doFollowNumText(dpList.get(2).getConcernCount()));
+                dpHolder.dpThirdFollowNumTv.setText(StringTool.doFollowNumText(dpList.get(2).getConcernCount()));
                 Picasso.with(context).load(dpList.get(3).getHeadpicurl()).into(dpHolder.dpFourthDpCiv);
                 dpHolder.dpFourthNameTv.setText(dpList.get(3).getName());
-                dpHolder.dpFourthFollowNumTv.setText(doFollowNumText(dpList.get(3).getConcernCount()));
+                dpHolder.dpFourthFollowNumTv.setText(StringTool.doFollowNumText(dpList.get(3).getConcernCount()));
                 break;
-            case TEXT:
+            case TYPETEXT:
                 TopicTpBean.DataBean.SubjectListBean textBean = (TopicTpBean.DataBean.SubjectListBean) datas.get(position);
                 Log.d("TopicTopicListAdapter", "textBean:" + textBean);
-                textHolder.textTitleTv.setText(doTitleText(textBean.getName()));
+                textHolder.textTitleTv.setText(StringTool.doTitleText(textBean.getName()));
                 String firstDpUrl = textBean.getTalkContent().get(0).getUserHeadPicUrl();
                 if (!firstDpUrl.isEmpty()){
-//                if (firstDpUrl != null){
                     Picasso.with(context).load(firstDpUrl).into(textHolder.textFirstDpCiv);
                 }
                 textHolder.textFirstContentTv.setText(textBean.getTalkContent().get(0).getContent());
                 String secondDpUrl = textBean.getTalkContent().get(1).getUserHeadPicUrl();
                 if (!secondDpUrl.isEmpty()){
-//                if (secondDpUrl != null){
                     Picasso.with(context).load(secondDpUrl).into(textHolder.textSecondDpCiv);
                 }
                 textHolder.textSecondContentTv.setText(textBean.getTalkContent().get(1).getContent());
                 textHolder.textTypeTv.setText(textBean.getClassification());
-                textHolder.textFollowNumTv.setText(doFollowNumText(textBean.getConcernCount()));
-                textHolder.textDiscussionNumTv.setText(doDiscussionNumText(textBean.getTalkCount()));
+                textHolder.textFollowNumTv.setText(StringTool.doFollowNumText(textBean.getConcernCount()));
+                textHolder.textDiscussionNumTv.setText(StringTool.doDiscussionNumText(textBean.getTalkCount()));
                 break;
-            case THREEPIC:
+            case TYPETHREEPIC:
                 TopicTpBean.DataBean.SubjectListBean threePicBean = (TopicTpBean.DataBean.SubjectListBean) datas.get(position);
                 Log.d("TopicTopicListAdapter", "threePicBean:" + threePicBean);
-                threePicHolder.threePicTitleTv.setText(doTitleText(threePicBean.getName()));
+                threePicHolder.threePicTitleTv.setText(StringTool.doTitleText(threePicBean.getName()));
                 Picasso.with(context).load(threePicBean.getTalkPicture().get(0)).into(threePicHolder.threePicFirstIv);
                 Picasso.with(context).load(threePicBean.getTalkPicture().get(1)).into(threePicHolder.threePicSecondIv);
                 Picasso.with(context).load(threePicBean.getTalkPicture().get(2)).into(threePicHolder.threePicThirdIv);
                 threePicHolder.threePicTypeTv.setText(threePicBean.getClassification());
-                threePicHolder.threePicFollowNumTv.setText(doFollowNumText(threePicBean.getConcernCount()));
-                threePicHolder.threePicDiscussionNumTv.setText(doDiscussionNumText(threePicBean.getTalkCount()));
+                threePicHolder.threePicFollowNumTv.setText(StringTool.doFollowNumText(threePicBean.getConcernCount()));
+                threePicHolder.threePicDiscussionNumTv.setText(StringTool.doDiscussionNumText(threePicBean.getTalkCount()));
                 break;
         }
         return convertView;
     }
 
-    private String doTitleText (String title) {
-        String str  = "#" + title + "#";
-        return str;
-    }
-
-    private String doFollowNumText(int concernCount) {
-        String str;
-        if (concernCount >= 10000) {
-            double temp = concernCount/10000.0;
-            double finalNum = (double) (Math.round(temp*10))/10;
-            str = finalNum + "万关注";
-        } else {
-            str = concernCount + "关注";
-        }
-        return str;
-    }
-    private String doDiscussionNumText(int concernCount) {
-        String str;
-        if (concernCount >= 10000) {
-            double temp = concernCount/10000.0;
-            double finalNum = (double) (Math.round(temp*10))/10;
-            str = finalNum + "万讨论";
-        } else {
-            str = concernCount + "讨论";
-        }
-        return str;
-    }
 
     class HeaderHolder {
         private ImageView headFirstIv;

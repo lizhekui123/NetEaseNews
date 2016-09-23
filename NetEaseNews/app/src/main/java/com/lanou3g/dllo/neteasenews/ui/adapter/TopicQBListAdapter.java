@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.lanou3g.dllo.neteasenews.R;
 import com.lanou3g.dllo.neteasenews.model.bean.TopicQBBean;
 import com.lanou3g.dllo.neteasenews.tools.ScreenSizeUtil;
+import com.lanou3g.dllo.neteasenews.tools.StringTool;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -69,21 +70,9 @@ public class TopicQBListAdapter extends BaseAdapter{
         holder.qbTv.setText(bean.getAlias());
         holder.typeTv.setText(bean.getClassification());
         int followNum = bean.getConcernCount();
-        if (followNum >= 10000) {
-            double temp = followNum/10000.0;
-            double finalNum = (double) (Math.round(temp*10))/10;
-            holder.followNumTv.setText(finalNum + "万关注");
-        } else {
-            holder.followNumTv.setText(followNum + "关注");
-        }
+        holder.followNumTv.setText(StringTool.doFollowNumText(followNum));
         int quesNum = bean.getQuestionCount();
-        if (quesNum >= 10000) {
-            double temp = quesNum/10000.0;
-            double finalNum = (double) (Math.round(temp*10))/10;
-            holder.quesNumTv.setText(finalNum + "万提问");
-        } else {
-            holder.quesNumTv.setText(quesNum + "提问");
-        }
+        holder.quesNumTv.setText(StringTool.doQuesNumText(quesNum));
         Picasso.with(context).load(bean.getHeadpicurl()).into(holder.dpCiv);
         Picasso.with(context).load(bean.getPicurl()).into(holder.bigIv);
         return convertView;

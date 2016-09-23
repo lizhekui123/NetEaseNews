@@ -1,9 +1,476 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="关注"/>
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/topic_follow_title" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/shape_follow_btn"
+                android:gravity="center"
+                android:padding="@dimen/topic_to_follow_padding"
+                android:text="@string/topic_to_follow"
+                android:textColor="@color/color_text_white" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/item_topic_line_margin"
+            android:background="@color/color_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/abj" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="大家都在看"
+                    android:textColor="@color/color_title_tv" />
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/topic_follow_see_first_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topic_follow_see_first_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/color_title_tv"
+                            android:textSize="@dimen/title_text_size" />
+
+                        <TextView
+                            android:id="@+id/topic_follow_see_first_num_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxx关注 · xxx讨论" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/topic_follow_see_first_add_iv"
+                        android:layout_width="@dimen/topic_follow_add_btn_size"
+                        android:layout_height="@dimen/topic_follow_add_btn_size"
+                        android:layout_margin="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/aac" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/topic_follow_see_second_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topic_follow_see_second_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/color_title_tv"
+                            android:textSize="@dimen/title_text_size" />
+
+                        <TextView
+                            android:id="@+id/topic_follow_see_second_num_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxx关注 · xxx讨论" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/topic_follow_see_second_add_iv"
+                        android:layout_width="@dimen/topic_follow_add_btn_size"
+                        android:layout_height="@dimen/topic_follow_add_btn_size"
+                        android:layout_margin="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/aac" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/topic_follow_see_third_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topic_follow_see_third_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/color_title_tv"
+                            android:textSize="@dimen/title_text_size" />
+
+                        <TextView
+                            android:id="@+id/topic_follow_see_third_num_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxx关注 · xxx讨论" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/topic_follow_see_third_add_iv"
+                        android:layout_width="@dimen/topic_follow_add_btn_size"
+                        android:layout_height="@dimen/topic_follow_add_btn_size"
+                        android:layout_margin="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/aac" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/topic_follow_see_fourth_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topic_follow_see_fourth_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/color_title_tv"
+                            android:textSize="@dimen/title_text_size" />
+
+                        <TextView
+                            android:id="@+id/topic_follow_see_fourth_num_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxx关注 · xxx讨论" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/topic_follow_see_fourth_add_iv"
+                        android:layout_width="@dimen/topic_follow_add_btn_size"
+                        android:layout_height="@dimen/topic_follow_add_btn_size"
+                        android:layout_margin="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/aac" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/abi" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="大家都在问"
+                    android:textColor="@color/color_title_tv" />
+            </LinearLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/topic_follow_ques_first_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topic_follow_ques_first_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/color_title_tv"
+                            android:textSize="@dimen/title_text_size" />
+
+                        <TextView
+                            android:id="@+id/topic_follow_ques_first_num_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxx关注 · xxx讨论" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/topic_follow_ques_first_add_iv"
+                        android:layout_width="@dimen/topic_follow_add_btn_size"
+                        android:layout_height="@dimen/topic_follow_add_btn_size"
+                        android:layout_margin="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/aac" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/topic_follow_ques_second_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topic_follow_ques_second_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/color_title_tv"
+                            android:textSize="@dimen/title_text_size" />
+
+                        <TextView
+                            android:id="@+id/topic_follow_ques_second_num_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxx关注 · xxx讨论" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/topic_follow_ques_second_add_iv"
+                        android:layout_width="@dimen/topic_follow_add_btn_size"
+                        android:layout_height="@dimen/topic_follow_add_btn_size"
+                        android:layout_margin="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/aac" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/topic_follow_ques_third_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topic_follow_ques_third_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/color_title_tv"
+                            android:textSize="@dimen/title_text_size" />
+
+                        <TextView
+                            android:id="@+id/topic_follow_ques_third_num_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxx关注 · xxx讨论" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/topic_follow_ques_third_add_iv"
+                        android:layout_width="@dimen/topic_follow_add_btn_size"
+                        android:layout_height="@dimen/topic_follow_add_btn_size"
+                        android:layout_margin="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/aac" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/topic_follow_ques_fourth_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/topic_follow_ques_fourth_title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/color_title_tv"
+                            android:textSize="@dimen/title_text_size" />
+
+                        <TextView
+                            android:id="@+id/topic_follow_ques_fourth_num_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="xxx关注 · xxx讨论" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/topic_follow_ques_fourth_add_iv"
+                        android:layout_width="@dimen/topic_follow_add_btn_size"
+                        android:layout_height="@dimen/topic_follow_add_btn_size"
+                        android:layout_margin="5dp"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/aac" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

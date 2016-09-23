@@ -5,18 +5,20 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="36dp"
         android:background="@color/color_main_btn_text_selected">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:scaleType="fitStart"
             android:src="@mipmap/news_logo_white"/>
         <ImageView
             android:id="@+id/news_live_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:scaleType="centerInside"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
@@ -24,17 +26,20 @@
         <ImageView
             android:id="@+id/news_search_iv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:scaleType="fitStart"
             android:layout_toLeftOf="@id/news_live_iv"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
             android:src="@mipmap/news_search_btn"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/news_live_iv"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="13dp"
             android:translationX="-3dp"
             android:text="7"
+            android:textSize="11sp"
             android:textColor="@android:color/white"/>
     </RelativeLayout>
     <LinearLayout
