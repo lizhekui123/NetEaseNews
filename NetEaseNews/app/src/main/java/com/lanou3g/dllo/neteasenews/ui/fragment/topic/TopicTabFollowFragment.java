@@ -10,7 +10,12 @@ import com.lanou3g.dllo.neteasenews.model.bean.TopicTpBean;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
+import com.lanou3g.dllo.neteasenews.tools.StringTool;
+import com.lanou3g.dllo.neteasenews.tools.ToastTool;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
@@ -67,6 +72,32 @@ public class TopicTabFollowFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
+        findView();
+    }
+
+
+
+    @Override
+    protected void initDatas() {
+        VolleyInstance.getInstance().startRequest(UrlValues.TOPICCONTENTURL, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                TopicTpBean bean = gson.fromJson(resultStr,TopicTpBean.class);
+                setView(bean);
+            }
+
+            @Override
+            public void failure() {
+                ToastTool.shortMsg("请求失败");
+            }
+        });
+    }
+
+    /**
+     * 初始化组件
+     */
+    private void findView() {
         seeFirstIv = byView(R.id.topic_follow_see_first_iv);
         seeFirstTitleTv = byView(R.id.topic_follow_see_first_title_tv);
         seeFirstNumTv = byView(R.id.topic_follow_see_first_num_tv);
@@ -100,28 +131,35 @@ public class TopicTabFollowFragment extends AbsBaseFragment {
         quesFourthNumTv = byView(R.id.topic_follow_ques_fourth_num_tv);
         quesFourthAddIv = byView(R.id.topic_follow_ques_fourth_add_iv);
     }
-
-    @Override
-    protected void initDatas() {
-        VolleyInstance.getInstance().startRequest(UrlValues.TOPICCONTENTURL, new VolleyResult() {
-            @Override
-            public void success(String resultStr) {
-                Gson gson = new Gson();
-                TopicTpBean bean = gson.fromJson(resultStr,TopicTpBean.class);
-                setView(bean);
-            }
-
-            @Override
-            public void failure() {
-
-            }
-        });
-    }
-
     /**
      * 设置页面
      */
     private void setView(TopicTpBean bean) {
-
+        List<TopicTpBean.DataBean.RecomendExpertBean.ExpertListBean> quesDatas = bean.getData().getRecomendExpert().getExpertList();
+        List<TopicTpBean.DataBean.SubjectListBean> seeDatas = bean.getData().getSubjectList();
+        Picasso.with(context).load(seeDatas.get(0).getPicurl()).into(seeFirstIv);
+        seeFirstTitleTv.setText(seeDatas.get(0).getName());
+        seeFirstNumTv.setText(StringTool.doDiscussionTwoNumText(seeDatas.get(0).getConcernCount(), seeDatas.get(0).getTalkCount()));
+        Picasso.with(context).load(seeDatas.get(1).getPicurl()).into(seeSecondIv);
+        seeSecondTitleTv.setText(seeDatas.get(1).getName());
+        seeSecondNumTv.setText(StringTool.doDiscussionTwoNumText(seeDatas.get(1).getConcernCount(), seeDatas.get(1).getTalkCount()));
+        Picasso.with(context).load(seeDatas.get(2).getPicurl()).into(seeThirdIv);
+        seeThirdTitleTv.setText(seeDatas.get(2).getName());
+        seeThirdNumTv.setText(StringTool.doDiscussionTwoNumText(seeDatas.get(2).getConcernCount(), seeDatas.get(2).getTalkCount()));
+        Picasso.with(context).load(seeDatas.get(3).getPicurl()).into(seeFourthIv);
+        seeFourthTitleTv.setText(seeDatas.get(3).getName());
+        seeFourthNumTv.setText(StringTool.doDiscussionTwoNumText(seeDatas.get(3).getConcernCount(), seeDatas.get(3).getTalkCount()));
+        Picasso.with(context).load(quesDatas.get(0).getHeadpicurl()).into(quesFirstIv);
+        quesFirstTitleTv.setText(quesDatas.get(0).getName());
+        quesFirstNumTv.setText(StringTool.doDiscussionTwoNumText(quesDatas.get(0).getConcernCount(), quesDatas.get(0).getQuestionCount()));
+        Picasso.with(context).load(quesDatas.get(1).getHeadpicurl()).into(quesSecondIv);
+        quesSecondTitleTv.setText(quesDatas.get(1).getName());
+        quesSecondNumTv.setText(StringTool.doDiscussionTwoNumText(quesDatas.get(1).getConcernCount(), quesDatas.get(1).getQuestionCount()));
+        Picasso.with(context).load(quesDatas.get(2).getHeadpicurl()).into(quesThirdIv);
+        quesThirdTitleTv.setText(quesDatas.get(2).getName());
+        quesThirdNumTv.setText(StringTool.doDiscussionTwoNumText(quesDatas.get(2).getConcernCount(), quesDatas.get(2).getQuestionCount()));
+        Picasso.with(context).load(quesDatas.get(3).getHeadpicurl()).into(quesFourthIv);
+        quesFourthTitleTv.setText(quesDatas.get(3).getName());
+        quesFourthNumTv.setText(StringTool.doDiscussionTwoNumText(quesDatas.get(3).getConcernCount(), quesDatas.get(3).getQuestionCount()));
     }
 }

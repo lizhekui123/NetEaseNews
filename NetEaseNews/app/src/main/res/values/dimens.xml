@@ -21,6 +21,7 @@
     <dimen name="item_topic_vertical_line_height">8dp</dimen>
     <dimen name="item_topic_vertical_line_distance">5dp</dimen>
     <dimen name="item_topic_dp_size">32dp</dimen>
+    <dimen name="item_topic_dp_cv_radius">16dp</dimen>
     <!--问吧-->
     <!--话题-->
     <!--话题头布局中图片 宽高比25:14-->
