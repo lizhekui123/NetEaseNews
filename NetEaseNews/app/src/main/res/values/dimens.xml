@@ -11,7 +11,7 @@
     <dimen name="title_text_size">15sp</dimen>
 
     <!--新闻页面-->
-
+    <dimen name="news_menu_gv_margin">5dp</dimen>
     <!--直播页面-->
 
     <!--话题页面-->
@@ -27,14 +27,19 @@
     <!--话题头布局中图片 宽高比25:14-->
     <dimen name="item_topic_head_pic_width">125dp</dimen>
     <dimen name="item_topic_head_pic_height">70dp</dimen>
-    
-    <dimen name="item_topic_head_tv_height">42dp</dimen>
+    <dimen name="item_topic_head_tv_margin">5dp</dimen>
+    <dimen name="item_topic_head_tv_height">47dp</dimen>
     <dimen name="item_topic_head_tv_size">15sp</dimen>
     <dimen name="item_topic_three_pic_size">100dp</dimen>
     <!--关注-->
+    <dimen name="topic_follow_head_height">120dp</dimen>
+    <dimen name="topic_follow_head_text_margin_top">8dp</dimen>
+    <dimen name="topic_follow_card_view_margin">5dp</dimen>
     <dimen name="item_topic_line_margin">15dp</dimen>
     <dimen name="topic_to_follow_padding">10dp</dimen>
     <dimen name="topic_follow_add_btn_size">25dp</dimen>
+    <dimen name="topic_follow_iv_size">60dp</dimen>
+    <dimen name="topic_follow_iv_margin">8dp</dimen>
     <!--我页面-->
 
 </resources>

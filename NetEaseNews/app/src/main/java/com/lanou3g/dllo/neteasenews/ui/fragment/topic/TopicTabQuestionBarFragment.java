@@ -32,7 +32,7 @@ public class TopicTabQuestionBarFragment extends AbsBaseFragment {
     private RecyclerView recyclerView;
 
     private ImageView menuIv;
-    public boolean menuIsSelected = false;
+    private boolean menuIsSelected = false;
 
     private TopicQBListAdapter adapter;
     private TopicQBHeaderAdapter headerAdapter;
