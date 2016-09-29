@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager;
 
 import com.lanou3g.dllo.neteasenews.R;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
-import com.lanou3g.dllo.neteasenews.ui.adapter.LiveTabAdapter;
+import com.lanou3g.dllo.neteasenews.ui.adapter.live.LiveTabAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;

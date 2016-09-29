@@ -10,7 +10,7 @@ import com.lanou3g.dllo.neteasenews.model.bean.TopicTpBean;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
-import com.lanou3g.dllo.neteasenews.ui.adapter.TopicTopicListAdapter;
+import com.lanou3g.dllo.neteasenews.ui.adapter.Topic.TopicTopicListAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;

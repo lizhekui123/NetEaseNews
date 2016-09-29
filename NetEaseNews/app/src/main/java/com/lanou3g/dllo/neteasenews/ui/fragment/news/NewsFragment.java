@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.lanou3g.dllo.neteasenews.R;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
-import com.lanou3g.dllo.neteasenews.ui.adapter.NewsMenuGVAdapter;
-import com.lanou3g.dllo.neteasenews.ui.adapter.NewsTabAdapter;
+import com.lanou3g.dllo.neteasenews.ui.adapter.news.NewsMenuGVAdapter;
+import com.lanou3g.dllo.neteasenews.ui.adapter.news.NewsTabAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;

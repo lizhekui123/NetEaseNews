@@ -4,11 +4,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <TextView
-        android:id="@+id/item_news_menu_tv"
+        android:id="@+id/item_live_grid_tv"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:gravity="center"
-        android:background="@drawable/selector_item_menu_bg"
+        android:background="@drawable/selector_item_live_header_bg"
         android:text="分类"
         android:textColor="@drawable/selector_item_menu_tv_color"
         />

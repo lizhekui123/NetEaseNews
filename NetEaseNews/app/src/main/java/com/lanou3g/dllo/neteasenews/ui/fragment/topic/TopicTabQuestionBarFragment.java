@@ -16,8 +16,8 @@ import com.lanou3g.dllo.neteasenews.model.bean.TopicQBHeaderBean;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
-import com.lanou3g.dllo.neteasenews.ui.adapter.TopicQBHeaderAdapter;
-import com.lanou3g.dllo.neteasenews.ui.adapter.TopicQBListAdapter;
+import com.lanou3g.dllo.neteasenews.ui.adapter.Topic.TopicQBHeaderAdapter;
+import com.lanou3g.dllo.neteasenews.ui.adapter.Topic.TopicQBListAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 import java.util.List;

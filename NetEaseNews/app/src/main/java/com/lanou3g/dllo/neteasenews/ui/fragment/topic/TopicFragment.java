@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.lanou3g.dllo.neteasenews.R;
-import com.lanou3g.dllo.neteasenews.ui.adapter.TopicTabAdapter;
+import com.lanou3g.dllo.neteasenews.ui.adapter.Topic.TopicTabAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 import java.util.ArrayList;

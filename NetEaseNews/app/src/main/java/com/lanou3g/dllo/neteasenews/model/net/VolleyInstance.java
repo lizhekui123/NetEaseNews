@@ -47,7 +47,7 @@ public class VolleyInstance {
     // 对外提供请求方法
     public void startRequest(String url, final VolleyResult result) {
 
-        if (url.equals(UrlValues.HOTLIVEURL) || url.equals(UrlValues.CLASSIFIEDCONTENTLIVEURL)){
+        if (url.endsWith(".json") && !url.equals(UrlValues.PHOTONEWSURL)){
             JsonUTF(url, result);
         } else {
             JsonNormal(url, result);

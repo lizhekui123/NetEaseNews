@@ -1,4 +1,4 @@
-package com.lanou3g.dllo.neteasenews.ui.adapter;
+package com.lanou3g.dllo.neteasenews.ui.adapter.Topic;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

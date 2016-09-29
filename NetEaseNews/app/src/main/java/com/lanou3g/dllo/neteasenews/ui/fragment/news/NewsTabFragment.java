@@ -10,7 +10,7 @@ import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
 import com.lanou3g.dllo.neteasenews.tools.ToastTool;
-import com.lanou3g.dllo.neteasenews.ui.adapter.NewsListAdapter;
+import com.lanou3g.dllo.neteasenews.ui.adapter.news.NewsListAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
 
 import java.util.List;
