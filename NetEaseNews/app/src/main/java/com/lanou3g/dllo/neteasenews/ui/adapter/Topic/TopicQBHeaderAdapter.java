@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/26.
+ * 话题-问吧头布局RecyclerView适配器
  */
 public class TopicQBHeaderAdapter extends RecyclerView.Adapter<TopicQBHeaderAdapter.HeaderViewHolder>{
     private Context context;

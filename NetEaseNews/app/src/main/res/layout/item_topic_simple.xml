@@ -37,8 +37,13 @@
                     android:id="@+id/item_topic_text_first_dp_civ"
                     android:layout_width="@dimen/item_topic_dp_size"
                     android:layout_height="@dimen/item_topic_dp_size"
-                    android:scaleType="centerInside"
+                    android:scaleType="fitXY"
                     android:src="@mipmap/a_5"/>
+                <ImageView
+                    android:layout_width="@dimen/item_topic_dp_size"
+                    android:layout_height="@dimen/item_topic_dp_size"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/no_circle"/>
                 <ImageView
                     android:id="@+id/first_double_quotation_marks_iv"
                     android:layout_width="wrap_content"
@@ -67,7 +72,12 @@
                     android:layout_width="@dimen/item_topic_dp_size"
                     android:layout_height="@dimen/item_topic_dp_size"
                     android:src="@mipmap/a_5"
-                    android:scaleType="centerInside"/>
+                    android:scaleType="fitXY"/>
+                <ImageView
+                    android:layout_width="@dimen/item_topic_dp_size"
+                    android:layout_height="@dimen/item_topic_dp_size"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/no_circle"/>
                 <ImageView
                     android:id="@+id/second_double_quotation_marks_iv"
                     android:layout_width="wrap_content"

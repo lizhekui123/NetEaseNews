@@ -97,7 +97,7 @@ public class TopicTabTopicFragment extends AbsBaseFragment {
                     }
                 }
                 List<TopicTpBean.DataBean.RecomendExpertBean.ExpertListBean> dpList = tpbean.getData().getRecomendExpert().getExpertList();
-                datas.add(4,dpList);
+                datas.add(4,dpList);// 将问吧推荐添加到数列第5个位置
                 types.add(4,TopicTopicListAdapter.TopicTpItemType.DP);
                 hascontent = true;
                 if (hasheader) {

@@ -120,6 +120,7 @@ public class LiveTabFragment extends AbsBaseFragment {
 //            VolleyInstance.getInstance().startRequest(UrlValues.CLASSIFIEDLIVEMENUURL, new VolleyResult() {
 //                @Override
 //                public void success(String resultStr) {
+//                    Log.d("LiveTabFragment", "请求成功");
 //                    Gson headerGson = new Gson();
 //                    Type type = new TypeToken<List<LiveHeaderBean>>() {
 //                    }.getType();
@@ -132,6 +133,9 @@ public class LiveTabFragment extends AbsBaseFragment {
 //                    Log.d("LiveTabFragment", "请求失败");
 //                }
 //            });
+            /**
+             * 因上方标注掉的接口一直请求失败所做的无奈之举,将接口的数据直接粘贴到字符串中
+             */
             String json = "[{\"type\":\"column\",\"visible\":false,\"name\":\"TOP100\",\"id\":3},{\"type\":\"column\",\"visible\":false,\"name\":\"大直播\",\"id\":4},{\"type\":\"column\",\"visible\":false,\"name\":\"在现场\",\"id\":5},{\"type\":\"column\",\"visible\":false,\"name\":\"星在线\",\"id\":6},{\"type\":\"column\",\"visible\":false,\"name\":\"纵横谈\",\"id\":7},{\"type\":\"column\",\"visible\":false,\"name\":\"资讯\",\"id\":8},{\"type\":\"column\",\"visible\":false,\"name\":\"娱乐\",\"id\":9},{\"type\":\"column\",\"visible\":false,\"name\":\"本地\",\"id\":10},{\"type\":\"column\",\"visible\":false,\"name\":\"体育\",\"id\":11},{\"type\":\"column\",\"visible\":false,\"name\":\"时尚\",\"id\":12},{\"type\":\"column\",\"visible\":false,\"name\":\"汽车\",\"id\":13},{\"type\":\"column\",\"visible\":false,\"name\":\"科技\",\"id\":14},{\"type\":\"column\",\"visible\":false,\"name\":\"财经\",\"id\":15},{\"type\":\"column\",\"visible\":false,\"name\":\"生活\",\"id\":16}]";
             Gson headerGson = new Gson();
             Type type = new TypeToken<List<LiveHeaderBean>>() {

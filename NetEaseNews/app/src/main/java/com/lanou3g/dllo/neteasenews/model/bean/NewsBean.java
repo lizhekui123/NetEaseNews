@@ -457,6 +457,7 @@ public class NewsBean {
         private int recType;
         private String recprog;
         private int replyCount;
+        private String source;
         private String skipID;
         private String skipType;
         private String subtitle;
@@ -470,6 +471,43 @@ public class NewsBean {
          * title : 别人家的网红食堂，轻松甩你几条街
          * url : C0S5B6E805169QC9
          */
+
+        /**
+         * 手动添加
+         */
+        private String TAG;
+
+        private List<ImgextraBean> imgextra;
+
+        public List<ImgextraBean> getImgextra() {
+            return imgextra;
+        }
+
+        public String getTAG() {
+            return TAG;
+        }
+
+        public void setTAG(String TAG) {
+            this.TAG = TAG;
+        }
+
+        public void setImgextra(List<ImgextraBean> imgextra) {
+            this.imgextra = imgextra;
+        }
+
+        public static class ImgextraBean {
+            private String imgsrc;
+
+            public String getImgsrc() {
+                return imgsrc;
+            }
+
+            public void setImgsrc(String imgsrc) {
+                this.imgsrc = imgsrc;
+            }
+        }
+
+        /**************/
 
         private List<AdsBean> ads;
 
@@ -665,6 +703,14 @@ public class NewsBean {
             this.template = template;
         }
 
+        public String getSource() {
+            return source;
+        }
+
+        public void setSource(String source) {
+            this.source = source;
+        }
+
         public String getTitle() {
             return title;
         }
@@ -763,6 +809,31 @@ public class NewsBean {
          */
 
         private List<ImgextraBean> imgextra;
+
+        /**
+         * 手动添加
+         */
+        private String TAG;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public String getTAG() {
+            return TAG;
+        }
+
+        public void setTAG(String TAG) {
+            this.TAG = TAG;
+        }
+
+        /**************/
 
         public String getPostid() {
             return postid;
@@ -1034,6 +1105,31 @@ public class NewsBean {
          */
 
         private List<ImgextraBean> imgextra;
+
+        /**
+         * 手动添加
+         */
+        private String TAG;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public String getTAG() {
+            return TAG;
+        }
+
+        public void setTAG(String TAG) {
+            this.TAG = TAG;
+        }
+
+        /**************/
 
         public String getPostid() {
             return postid;
@@ -1362,6 +1458,31 @@ public class NewsBean {
 
         private List<ImgextraBean> imgextra;
 
+        /**
+         * 手动添加
+         */
+        private String TAG;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public String getTAG() {
+            return TAG;
+        }
+
+        public void setTAG(String TAG) {
+            this.TAG = TAG;
+        }
+
+        /**************/
+
         public String getPostid() {
             return postid;
         }
@@ -1680,6 +1801,33 @@ public class NewsBean {
 
         private List<DingyueBean> dingyue;
 
+        /**
+         * 手动添加
+         */
+        private List<ImgextraBean> imgextra;
+
+        public List<ImgextraBean> getImgextra() {
+            return imgextra;
+        }
+
+        public void setImgextra(List<ImgextraBean> imgextra) {
+            this.imgextra = imgextra;
+        }
+
+        public static class ImgextraBean {
+            private String imgsrc;
+
+            public String getImgsrc() {
+                return imgsrc;
+            }
+
+            public void setImgsrc(String imgsrc) {
+                this.imgsrc = imgsrc;
+            }
+        }
+
+        /**************/
+
         public int getAdtype() {
             return adtype;
         }
@@ -1944,6 +2092,43 @@ public class NewsBean {
         private VideoTopicBean videoTopic;
         private String videosource;
 
+        /**
+         * 手动添加
+         */
+        private List<ImgextraBean> imgextra;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public List<ImgextraBean> getImgextra() {
+            return imgextra;
+        }
+
+        public void setImgextra(List<ImgextraBean> imgextra) {
+            this.imgextra = imgextra;
+        }
+
+        public static class ImgextraBean {
+            private String imgsrc;
+
+            public String getImgsrc() {
+                return imgsrc;
+            }
+
+            public void setImgsrc(String imgsrc) {
+                this.imgsrc = imgsrc;
+            }
+        }
+
+        /**************/
+
         public String getCover() {
             return cover;
         }
@@ -2190,6 +2375,53 @@ public class NewsBean {
          */
 
         private List<AdsBean> ads;
+
+        /**
+         * 手动添加
+         */
+        private String TAG;
+
+        private List<ImgextraBean> imgextra;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public List<ImgextraBean> getImgextra() {
+            return imgextra;
+        }
+
+        public String getTAG() {
+            return TAG;
+        }
+
+        public void setTAG(String TAG) {
+            this.TAG = TAG;
+        }
+
+        public void setImgextra(List<ImgextraBean> imgextra) {
+            this.imgextra = imgextra;
+        }
+
+        public static class ImgextraBean {
+            private String imgsrc;
+
+            public String getImgsrc() {
+                return imgsrc;
+            }
+
+            public void setImgsrc(String imgsrc) {
+                this.imgsrc = imgsrc;
+            }
+        }
+
+        /**************/
 
         public String getPostid() {
             return postid;
@@ -2511,6 +2743,53 @@ public class NewsBean {
          */
 
         private List<AdsBean> ads;
+
+        /**
+         * 手动添加
+         */
+        private String TAG;
+
+        private List<ImgextraBean> imgextra;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public List<ImgextraBean> getImgextra() {
+            return imgextra;
+        }
+
+        public String getTAG() {
+            return TAG;
+        }
+
+        public void setTAG(String TAG) {
+            this.TAG = TAG;
+        }
+
+        public void setImgextra(List<ImgextraBean> imgextra) {
+            this.imgextra = imgextra;
+        }
+
+        public static class ImgextraBean {
+            private String imgsrc;
+
+            public String getImgsrc() {
+                return imgsrc;
+            }
+
+            public void setImgsrc(String imgsrc) {
+                this.imgsrc = imgsrc;
+            }
+        }
+
+        /**************/
 
         public String getPostid() {
             return postid;
@@ -2840,6 +3119,53 @@ public class NewsBean {
          */
 
         private List<AdsBean> ads;
+
+        /**
+         * 手动添加
+         */
+        private String TAG;
+
+        private List<ImgextraBean> imgextra;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public List<ImgextraBean> getImgextra() {
+            return imgextra;
+        }
+
+        public String getTAG() {
+            return TAG;
+        }
+
+        public void setTAG(String TAG) {
+            this.TAG = TAG;
+        }
+
+        public void setImgextra(List<ImgextraBean> imgextra) {
+            this.imgextra = imgextra;
+        }
+
+        public static class ImgextraBean {
+            private String imgsrc;
+
+            public String getImgsrc() {
+                return imgsrc;
+            }
+
+            public void setImgsrc(String imgsrc) {
+                this.imgsrc = imgsrc;
+            }
+        }
+
+        /**************/
 
         public String getPostid() {
             return postid;
@@ -3221,6 +3547,31 @@ public class NewsBean {
 
         private List<ImgextraBean> imgextra;
 
+        /**
+         * 手动添加
+         */
+        private String TAG;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public String getTAG() {
+            return TAG;
+        }
+
+        public void setTAG(String TAG) {
+            this.TAG = TAG;
+        }
+
+        /**************/
+
         public String getPostid() {
             return postid;
         }
@@ -3579,6 +3930,43 @@ public class NewsBean {
         private String imgsum;
         private String tcover;
         private List<String> pics;
+
+        /**
+         * 手动添加
+         */
+        private List<ImgextraBean> imgextra;
+
+        private int imgType;
+
+        public int getImgType() {
+            return imgType;
+        }
+
+        public void setImgType(int imgType) {
+            this.imgType = imgType;
+        }
+
+        public List<ImgextraBean> getImgextra() {
+            return imgextra;
+        }
+
+        public void setImgextra(List<ImgextraBean> imgextra) {
+            this.imgextra = imgextra;
+        }
+
+        public static class ImgextraBean {
+            private String imgsrc;
+
+            public String getImgsrc() {
+                return imgsrc;
+            }
+
+            public void setImgsrc(String imgsrc) {
+                this.imgsrc = imgsrc;
+            }
+        }
+
+        /**************/
 
         public String getDesc() {
             return desc;

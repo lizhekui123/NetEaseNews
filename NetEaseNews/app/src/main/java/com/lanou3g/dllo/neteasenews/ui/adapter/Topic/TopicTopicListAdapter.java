@@ -25,9 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class TopicTopicListAdapter extends BaseAdapter {
 
-    private TopicTpBean bean;
     private Context context;
-    private LayoutInflater inflater;
     private ArrayList datas = new ArrayList();
     private List<TopicTpItemType> types = new ArrayList<>();
     private static final int TYPEHEADER = 0;

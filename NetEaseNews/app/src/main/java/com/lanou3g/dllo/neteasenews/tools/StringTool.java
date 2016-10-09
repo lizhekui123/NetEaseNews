@@ -5,6 +5,53 @@ package com.lanou3g.dllo.neteasenews.tools;
  * 文字处理工具类
  */
 public class StringTool {
+
+    /**
+     * 修改跟帖数文字
+     */
+    public static String doReplyNumText(int replyNum) {
+        String str;
+        if (replyNum >= 10000) {
+            double temp = replyNum/10000.0;
+            double finalNum = (double) (Math.round(temp*10))/10;
+            str = finalNum + "万跟帖";
+        } else {
+            str = replyNum + "跟帖";
+        }
+        return str;
+    }
+
+    /**
+     * 修改视频时长和播放数文字
+     */
+    public static String doVideoText (int length, int playCount) {
+        String str;
+        String str1;
+        if (length/60 < 10){
+            if(length%60 < 10){
+                str1 = "0" + length/60 + ":0" + length%60;
+            } else {
+                str1 = "0" + length/60 + ":" + length%60;
+            }
+        } else {
+            if(length%60 < 10){
+                str1 = length/60 + ":0" + length%60;
+            } else {
+                str1 = length/60 + ":" + length%60;
+            }
+        }
+        String str2;
+        if (playCount >= 10000) {
+            double temp = playCount/10000.0;
+            double finalNum = (double) (Math.round(temp*10))/10;
+            str2 = finalNum + "万播放";
+        } else {
+            str2 = playCount + "播放";
+        }
+        str = str1 + "/" + str2;
+        return str;
+    }
+
     /**
      * 修改标题文字
      */

@@ -91,16 +91,18 @@ public class LiveListAdapter extends BaseAdapter{
                 }
 
             }
+            holder.numTv.setText(bean.getUserCount() + "参与");
         }
         return convertView;
     }
     public class LiveItemViewHolder {
         private ImageView img, stateImg;
-        private TextView textView;
+        private TextView textView,numTv;
         public LiveItemViewHolder(View view) {
             img = (ImageView) view.findViewById(R.id.item_live_iv);
             stateImg = (ImageView) view.findViewById(R.id.item_live_state_iv);
             textView = (TextView) view.findViewById(R.id.item_live_title_tv);
+            numTv = (TextView) view.findViewById(R.id.item_live_num_tv);
         }
     }
 }

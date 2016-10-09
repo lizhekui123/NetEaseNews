@@ -15,8 +15,12 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.lanou3g.dllo.neteasenews.R;
+import com.lanou3g.dllo.neteasenews.model.bean.LiveBean;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
+import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
+import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
 import com.lanou3g.dllo.neteasenews.ui.adapter.news.NewsMenuGVAdapter;
 import com.lanou3g.dllo.neteasenews.ui.adapter.news.NewsTabAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
@@ -37,7 +41,7 @@ public class NewsFragment extends AbsBaseFragment {
     private ArrayList<String> tabUrl;
 
     private ImageView menuIv;
-    private TextView changeTv;
+    private TextView changeTv,liveNumTv;
     private GridView gridView;
     private NewsMenuGVAdapter gvAdapter;
 
@@ -61,6 +65,7 @@ public class NewsFragment extends AbsBaseFragment {
 
         menuIv = byView(R.id.news_menu_iv);
         changeTv = byView(R.id.news_change_tv);
+        liveNumTv = byView(R.id.news_live_num_tv);
 
     }
 
@@ -68,6 +73,26 @@ public class NewsFragment extends AbsBaseFragment {
     protected void initDatas() {
         AnimationDrawable drawable = (AnimationDrawable) newsLiveIv.getBackground();
         drawable.start();
+        VolleyInstance.getInstance().startRequest(UrlValues.HOTLIVEURL, new VolleyResult() {
+            @Override
+            public void success(String resultStr) {
+                Gson gson = new Gson();
+                LiveBean liveBean = gson.fromJson(resultStr,LiveBean.class);
+                List<LiveBean.LiveReviewBean> datas = liveBean.getLive_review();
+                int liveNum = 0;
+                for (int i = 0; i < datas.size(); i++) {
+                    if (datas.get(i).getLiveStatus() == 1) {
+                        liveNum++;
+                    }
+                }
+                liveNumTv.setText(String.valueOf(liveNum));
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
         buildData();
         NewsTabAdapter adapter = new NewsTabAdapter(getChildFragmentManager());
         adapter.setTitles(titles);
@@ -138,10 +163,6 @@ public class NewsFragment extends AbsBaseFragment {
         tabUrl.add(UrlValues.ENTERTAINMENTNEWSURL);
         titles.add("体育");
         tabUrl.add(UrlValues.SPORTSNEWSURL);
-        titles.add("网易号");
-        tabUrl.add(UrlValues.NETEASENUMNEWSURL);
-        titles.add("视频");
-        tabUrl.add(UrlValues.VIDEONEWSURL);
         titles.add("财经");
         tabUrl.add(UrlValues.FINANCIALNEWSURL);
         titles.add("科技");
@@ -150,10 +171,14 @@ public class NewsFragment extends AbsBaseFragment {
         tabUrl.add(UrlValues.AUTONEWSURL);
         titles.add("时尚");
         tabUrl.add(UrlValues.FASHIONNEWSURL);
+        titles.add("视频");
+        tabUrl.add(UrlValues.VIDEONEWSURL);
         titles.add("图片");
         tabUrl.add(UrlValues.PHOTONEWSURL);
-        for (int i = 0; i < titles.size(); i++) {
+        for (int i = 0; i < titles.size() - 2; i++) {
             fragments.add(NewsTabFragment.newInstance(tabUrl.get(i)));
         }
+        fragments.add(NewsVideoFragment.newInstance(tabUrl.get(titles.size() - 2)));
+        fragments.add(NewsPhotoFragment.newInstance(tabUrl.get(titles.size() - 1)));
     }
 }

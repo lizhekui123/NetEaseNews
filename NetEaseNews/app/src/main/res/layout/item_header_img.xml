@@ -8,10 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/rotate_vp"
+        <ImageView
+            android:id="@+id/image_iv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" 
+            android:scaleType="centerCrop"/>
 
 
         <LinearLayout
@@ -22,7 +23,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/rotate_tv"
+                android:id="@+id/image_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_text_white"
@@ -31,19 +32,15 @@
                 android:maxEms="15" />
 
             <ImageView
-                android:id="@+id/rotate_type_iv"
+                android:id="@+id/image_type_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="18dp"
                 android:scaleType="fitStart"
                 android:layout_marginLeft="5dp"/>
-            <LinearLayout
-                android:id="@+id/rotate_point_container"
+            <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="right|center_vertical"
-                android:orientation="horizontal"
-                android:paddingRight="10dp" />
+                android:layout_weight="1"/>
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>
