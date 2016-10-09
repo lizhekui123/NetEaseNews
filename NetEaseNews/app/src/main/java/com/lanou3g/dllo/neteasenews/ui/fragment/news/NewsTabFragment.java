@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lanou3g.dllo.neteasenews.R;
 import com.lanou3g.dllo.neteasenews.model.bean.NewsBean;
 import com.lanou3g.dllo.neteasenews.model.bean.RotateAdsBean;
@@ -40,9 +42,12 @@ public class NewsTabFragment extends AbsBaseFragment {
     private List<RotateAdsBean> rotateDatas;
     private RotateVpAdapter vpAdapter;
 
+    private PullToRefreshListView refreshListView;
     private ListView listView;
     private NewsListAdapter adapter;
     private String strUrl;
+
+    int[] urlNums = {0,0,0,0,0,0,0,0};
 
     public static NewsTabFragment newInstance(String url) {
         Bundle args = new Bundle();
@@ -59,13 +64,271 @@ public class NewsTabFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
-        listView = byView(R.id.news_tab_lv);
+        refreshListView = byView(R.id.news_tab_lv);
         adapter = new NewsListAdapter(context);
-        listView.setAdapter(adapter);
+        refreshListView.setAdapter(adapter);
     }
 
     @Override
     protected void initDatas() {
+
+        refreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                /**
+                 * 下拉刷新任务
+                 */
+                VolleyInstance.getInstance().startRequest(strUrl, new VolleyResult() {
+                    @Override
+                    public void success(String resultStr) {
+                        Gson gson = new Gson();
+                        NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                        if (strUrl.equals(UrlValues.HEADLINENEWSURL)) {
+                            List<NewsBean.T1348647909107Bean> datas = newsBean.getT1348647909107();
+                            adapter.setDatas(strUrl, datas);
+                        } else if (strUrl.equals(UrlValues.SELECTEDNEWSURL)) {
+                            List<NewsBean.T1467284926140Bean> datas = newsBean.getT1467284926140();
+                            adapter.setDatas(strUrl, datas);
+                        } else if (strUrl.equals(UrlValues.ENTERTAINMENTNEWSURL)) {
+                            List<NewsBean.T1348648517839Bean> datas = newsBean.getT1348648517839();
+                            adapter.setDatas(strUrl, datas);
+                        } else if (strUrl.equals(UrlValues.SPORTSNEWSURL)) {
+                            List<NewsBean.T1348649079062Bean> datas = newsBean.getT1348649079062();
+                            adapter.setDatas(strUrl, datas);
+                        } else if (strUrl.equals(UrlValues.FINANCIALNEWSURL)) {
+                            List<NewsBean.T1348648756099Bean> datas = newsBean.getT1348648756099();
+                            adapter.setDatas(strUrl, datas);
+                        } else if (strUrl.equals(UrlValues.TECHNEWSURL)) {
+                            List<NewsBean.T1348649580692Bean> datas = newsBean.getT1348649580692();
+                            adapter.setDatas(strUrl, datas);
+                        } else if (strUrl.equals(UrlValues.AUTONEWSURL)) {
+                            List<NewsBean.ListBean> datas = newsBean.getList();
+                            adapter.setDatas(strUrl, datas);
+                        } else if (strUrl.equals(UrlValues.FASHIONNEWSURL)) {
+                            List<NewsBean.T1348650593803Bean> datas = newsBean.getT1348650593803();
+                            adapter.setDatas(strUrl, datas);
+                        } else {
+                            List<NewsBean.T1348647909107Bean> datas = newsBean.getT1348647909107();
+                            adapter.setDatas(strUrl, datas);
+                        }
+                        refreshListView.onRefreshComplete();
+                    }
+
+                    @Override
+                    public void failure() {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                /**
+                 * 上拉加载任务
+                 */
+                if (strUrl.equals(UrlValues.HEADLINENEWSURL)) {
+                    final List<NewsBean.T1348647909107Bean> datas = adapter.getDatas();
+                    if (urlNums[0] < 210) {
+                        urlNums[0] = urlNums[0] + 10;
+                        String newUrl = "http://c.3g.163.com/recommend/getSubDocPic?tid=T1348647909107&from=toutiao&offset=" + urlNums[0] + "&size=10";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getT1348647909107());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                } else if (strUrl.equals(UrlValues.SELECTEDNEWSURL)) {
+                    final List<NewsBean.T1467284926140Bean> datas = adapter.getDatas();
+                    if (urlNums[1] < 420) {
+                        urlNums[1] = urlNums[1] + 20;
+                        String newUrl = "http://c.m.163.com/nc/article/list/T1467284926140/" + urlNums[1] + "-20.html";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getT1467284926140());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                } else if (strUrl.equals(UrlValues.ENTERTAINMENTNEWSURL)) {
+                    final List<NewsBean.T1348648517839Bean> datas = adapter.getDatas();
+                    if (urlNums[2] < 420) {
+                        urlNums[2] = urlNums[2] + 20;
+                        String newUrl = "http://c.m.163.com/nc/article/list/T1348648517839/" + urlNums[2] + "-20.html";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getT1348648517839());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                } else if (strUrl.equals(UrlValues.SPORTSNEWSURL)) {
+                    final List<NewsBean.T1348649079062Bean> datas = adapter.getDatas();
+                    if (urlNums[3] < 420) {
+                        urlNums[3] = urlNums[3] + 20;
+                        String newUrl = "http://c.m.163.com/nc/article/list/T1348649079062/" + urlNums[3] + "-20.html";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getT1348649079062());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                } else if (strUrl.equals(UrlValues.FINANCIALNEWSURL)) {
+                    final List<NewsBean.T1348648756099Bean> datas = adapter.getDatas();
+                    if (urlNums[4] < 420) {
+                        urlNums[4] = urlNums[4] + 20;
+                        String newUrl = "http://c.m.163.com/nc/article/list/T1348648756099/" + urlNums[4] + "-20.html";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getT1348648756099());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                } else if (strUrl.equals(UrlValues.TECHNEWSURL)) {
+                    final List<NewsBean.T1348649580692Bean> datas = adapter.getDatas();
+                    if (urlNums[5] < 420) {
+                        urlNums[5] = urlNums[5] + 20;
+                        String newUrl = "http://c.m.163.com/nc/article/list/T1348649580692/" + urlNums[5] + "-20.html";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getT1348649580692());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                } else if (strUrl.equals(UrlValues.AUTONEWSURL)) {
+                    final List<NewsBean.ListBean> datas = adapter.getDatas();
+                    if (urlNums[6] < 420) {
+                        urlNums[6] = urlNums[6] + 20;
+                        String newUrl = "http://c.m.163.com/nc/article/list/5YWo5Zu9/" + urlNums[6] + "-20.html";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getList());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                } else if (strUrl.equals(UrlValues.FASHIONNEWSURL)) {
+                    final List<NewsBean.T1348650593803Bean> datas = adapter.getDatas();
+                    if (urlNums[7] < 420) {
+                        urlNums[7] = urlNums[7] + 20;
+                        String newUrl = "http://c.m.163.com/nc/article/list/T1348650593803/" + urlNums[7] + "-20.html";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getT1348650593803());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                } else {
+                    final List<NewsBean.T1348647909107Bean> datas = adapter.getDatas();
+                    if (urlNums[0] < 210) {
+                        urlNums[0] = urlNums[0] + 10;
+                        String newUrl = "http://c.3g.163.com/recommend/getSubDocPic?tid=T1348647909107&from=toutiao&offset=" + urlNums[0] + "&size=10";
+                        VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
+                            @Override
+                            public void success(String resultStr) {
+                                Gson gson = new Gson();
+                                NewsBean newsBean = gson.fromJson(resultStr, NewsBean.class);
+                                datas.addAll(newsBean.getT1348647909107());
+                                adapter.setDatas(strUrl, datas);
+                            }
+
+                            @Override
+                            public void failure() {
+                                ToastTool.shortMsg("请求失败");
+                            }
+                        });
+                    } else {
+                        ToastTool.shortMsg("没有更多数据了");
+                    }
+                }
+                refreshListView.onRefreshComplete();
+            }
+        });
+
         Bundle bundle = getArguments();
         strUrl = bundle.getString("url");
         VolleyInstance.getInstance().startRequest(strUrl, new VolleyResult() {
@@ -87,6 +350,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                         doRotate(rotateDatas);// 设置轮播图
                     } else {
                         View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                        listView = refreshListView.getRefreshableView();
                         listView.addHeaderView(view);
                         textView = (TextView) view.findViewById(R.id.image_tv);
                         imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -97,6 +361,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                     List<NewsBean.T1467284926140Bean> datas = newsBean.getT1467284926140();
                     adapter.setDatas(strUrl, datas);
                     View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                    listView = refreshListView.getRefreshableView();
                     listView.addHeaderView(view);
                     textView = (TextView) view.findViewById(R.id.image_tv);
                     imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -116,6 +381,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                         doRotate(rotateDatas);// 设置轮播图
                     } else {
                         View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                        listView = refreshListView.getRefreshableView();
                         listView.addHeaderView(view);
                         textView = (TextView) view.findViewById(R.id.image_tv);
                         imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -137,6 +403,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                         doRotate(rotateDatas);// 设置轮播图
                     } else {
                         View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                        listView = refreshListView.getRefreshableView();
                         listView.addHeaderView(view);
                         textView = (TextView) view.findViewById(R.id.image_tv);
                         imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -157,6 +424,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                         doRotate(rotateDatas);// 设置轮播图
                     } else {
                         View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                        listView = refreshListView.getRefreshableView();
                         listView.addHeaderView(view);
                         textView = (TextView) view.findViewById(R.id.image_tv);
                         imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -177,6 +445,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                         doRotate(rotateDatas);// 设置轮播图
                     } else {
                         View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                        listView = refreshListView.getRefreshableView();
                         listView.addHeaderView(view);
                         textView = (TextView) view.findViewById(R.id.image_tv);
                         imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -197,6 +466,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                         doRotate(rotateDatas);// 设置轮播图
                     } else {
                         View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                        listView = refreshListView.getRefreshableView();
                         listView.addHeaderView(view);
                         textView = (TextView) view.findViewById(R.id.image_tv);
                         imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -217,6 +487,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                         doRotate(rotateDatas);// 设置轮播图
                     } else {
                         View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                        listView = refreshListView.getRefreshableView();
                         listView.addHeaderView(view);
                         textView = (TextView) view.findViewById(R.id.image_tv);
                         imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -237,6 +508,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                         doRotate(rotateDatas);// 设置轮播图
                     } else {
                         View view = LayoutInflater.from(context).inflate(R.layout.item_header_img, null);
+                        listView = refreshListView.getRefreshableView();
                         listView.addHeaderView(view);
                         textView = (TextView) view.findViewById(R.id.image_tv);
                         imageView = (ImageView) view.findViewById(R.id.image_iv);
@@ -256,6 +528,7 @@ public class NewsTabFragment extends AbsBaseFragment {
 
     private void initRotate() {
         View view = LayoutInflater.from(context).inflate(R.layout.item_header_rotate, null);
+        listView = refreshListView.getRefreshableView();
         listView.addHeaderView(view);
         viewPager = (ViewPager) view.findViewById(R.id.rotate_vp);
         textView = (TextView) view.findViewById(R.id.rotate_tv);
@@ -392,4 +665,5 @@ public class NewsTabFragment extends AbsBaseFragment {
         super.onPause();
         isRotate = false;
     }
+
 }

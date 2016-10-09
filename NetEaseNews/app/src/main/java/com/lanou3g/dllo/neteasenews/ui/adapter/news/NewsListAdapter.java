@@ -36,6 +36,10 @@ public class NewsListAdapter<T> extends BaseAdapter {
         notifyDataSetChanged();
     }
 
+    public List<T> getDatas() {
+        return datas;
+    }
+
     public NewsListAdapter(Context context) {
         this.context = context;
     }
@@ -82,12 +86,6 @@ public class NewsListAdapter<T> extends BaseAdapter {
             if (bean.getImgType() == 1) {
                 skipType = "live";
             }
-        } else if (url.equals(UrlValues.VIDEONEWSURL)) {
-            // 暂留,后删除
-            NewsBean.视频Bean bean = (NewsBean.视频Bean) datas.get(position + 1);
-            if (bean.getImgType() == 1) {
-                skipType = "live";
-            }
         } else if (url.equals(UrlValues.FINANCIALNEWSURL)) {
             NewsBean.T1348648756099Bean bean = (NewsBean.T1348648756099Bean) datas.get(position + 1);
             if (bean.getImgType() == 1) {
@@ -106,12 +104,6 @@ public class NewsListAdapter<T> extends BaseAdapter {
         } else if (url.equals(UrlValues.FASHIONNEWSURL)) {
             NewsBean.T1348650593803Bean bean = (NewsBean.T1348650593803Bean) datas.get(position + 1);
             skipType = bean.getSkipType();
-            if (bean.getImgType() == 1) {
-                skipType = "live";
-            }
-        } else if (url.equals(UrlValues.PHOTONEWSURL)) {
-            // 暂留,后删除
-            NewsBean.PhotoBean bean = (NewsBean.PhotoBean) datas.get(position + 1);
             if (bean.getImgType() == 1) {
                 skipType = "live";
             }
