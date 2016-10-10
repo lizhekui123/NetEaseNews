@@ -198,8 +198,8 @@ public class NewsListAdapter<T> extends BaseAdapter {
                     case TYPE_PHOTOSET:
                         photoSetViewHolder.titleTv.setText(bean.getTitle());
                         Picasso.with(context).load(bean.getImgsrc()).into(photoSetViewHolder.firstIv);
-                        Picasso.with(context).load(bean.getImgextra().get(0).getImgsrc()).into(photoSetViewHolder.secondIv);
-                        Picasso.with(context).load(bean.getImgextra().get(1).getImgsrc()).into(photoSetViewHolder.thirdIv);
+                        Picasso.with(context).load(bean.getImgnewextra().get(0).getImgsrc()).into(photoSetViewHolder.secondIv);
+                        Picasso.with(context).load(bean.getImgnewextra().get(1).getImgsrc()).into(photoSetViewHolder.thirdIv);
                         photoSetViewHolder.fromTv.setText(bean.getSource());
                         photoSetViewHolder.replyNumTv.setText(StringTool.doReplyNumText(bean.getReplyCount()));
                         break;
@@ -449,8 +449,8 @@ public class NewsListAdapter<T> extends BaseAdapter {
                     case TYPE_PHOTOSET:
                         photoSetViewHolder.titleTv.setText(bean.getTitle());
                         Picasso.with(context).load(bean.getImgsrc()).into(photoSetViewHolder.firstIv);
-                        Picasso.with(context).load(bean.getImgextra().get(0).getImgsrc()).into(photoSetViewHolder.secondIv);
-                        Picasso.with(context).load(bean.getImgextra().get(1).getImgsrc()).into(photoSetViewHolder.thirdIv);
+                        Picasso.with(context).load(bean.getImgnewextra().get(0).getImgsrc()).into(photoSetViewHolder.secondIv);
+                        Picasso.with(context).load(bean.getImgnewextra().get(1).getImgsrc()).into(photoSetViewHolder.thirdIv);
                         photoSetViewHolder.fromTv.setText(bean.getSource());
                         photoSetViewHolder.replyNumTv.setText(StringTool.doReplyNumText(bean.getReplyCount()));
                         break;

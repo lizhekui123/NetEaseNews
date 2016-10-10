@@ -1,12 +1,13 @@
 package com.lanou3g.dllo.neteasenews.model.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/8.
  * 新闻的实体类
  */
-public class NewsBean {
+public class NewsBean implements Serializable{
 
     /**
      * ads : [{"imgsrc":"http://cms-bucket.nosdn.127.net/c2c5263ab93646bb84ee5ea6008183e720160913183636.jpeg","subtitle":"","tag":"doc","title":"别人家的网红食堂，轻松甩你几条街","url":"C0S5B6E805169QC9"},{"imgsrc":"http://cms-bucket.nosdn.127.net/37631833862e4fa88ae82dca867aa53220160913160915.jpeg","subtitle":"","tag":"photoset","title":"住建部否认海绵城市试点失败 称在推进","url":"00AP0001|2197605"},{"imgsrc":"http://cms-bucket.nosdn.127.net/ea97d6ecf03f4c3680dc40dd606e427920160913120917.jpeg","subtitle":"","tag":"photoset","title":"青岛一村过中秋现场发500万现金","url":"00AP0001|2197560"},{"imgsrc":"http://cms-bucket.nosdn.127.net/b9e303b979974822a6effc0a4790086320160913112644.jpeg","subtitle":"","tag":"photoset","title":"快播涉黄被判罚1千万 王欣等4人获刑","url":"00AP0001|2197534"},{"imgsrc":"http://cms-bucket.nosdn.127.net/e4cdced39138456f84a05462823aa70f20160913105138.jpeg","subtitle":"","tag":"photoset","title":"图片故事：无腿少年上学记","url":"00AP0001|2197515"}]
@@ -437,7 +438,7 @@ public class NewsBean {
         this.photo = photo;
     }
 
-    public static class T1348647909107Bean {
+    public static class T1348647909107Bean implements Serializable{
         private int adtype;
         private int clkNum;
         private String docid;
@@ -477,10 +478,16 @@ public class NewsBean {
          */
         private String TAG;
 
-        private List<ImgextraBean> imgextra;
+        private String url_3w;
 
-        public List<ImgextraBean> getImgextra() {
-            return imgextra;
+        private List<ImgnewextraBean> imgnewextra;
+
+        public String getUrl_3w() {
+            return url_3w;
+        }
+
+        public void setUrl_3w(String url_3w) {
+            this.url_3w = url_3w;
         }
 
         public String getTAG() {
@@ -491,11 +498,15 @@ public class NewsBean {
             this.TAG = TAG;
         }
 
-        public void setImgextra(List<ImgextraBean> imgextra) {
-            this.imgextra = imgextra;
+        public List<ImgnewextraBean> getImgnewextra() {
+            return imgnewextra;
         }
 
-        public static class ImgextraBean {
+        public void setImgnewextra(List<ImgnewextraBean> imgnewextra) {
+            this.imgnewextra = imgnewextra;
+        }
+
+        public static class ImgnewextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -727,7 +738,7 @@ public class NewsBean {
             this.ads = ads;
         }
 
-        public static class AdsBean {
+        public static class AdsBean implements Serializable{
             private String imgsrc;
             private String subtitle;
             private String tag;
@@ -777,7 +788,7 @@ public class NewsBean {
     }
 
 
-    public static class T1467284926140Bean {
+    public static class T1467284926140Bean implements Serializable{
         private String postid;
         private boolean hasCover;
         private int hasHead;
@@ -816,6 +827,16 @@ public class NewsBean {
         private String TAG;
 
         private int imgType;
+
+        private String url_3w;
+
+        public String getUrl_3w() {
+            return url_3w;
+        }
+
+        public void setUrl_3w(String url_3w) {
+            this.url_3w = url_3w;
+        }
 
         public int getImgType() {
             return imgType;
@@ -1051,7 +1072,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -1064,7 +1085,7 @@ public class NewsBean {
         }
     }
 
-    public static class T1348648517839Bean {
+    public static class T1348648517839Bean implements Serializable{
         private String postid;
         private boolean hasCover;
         private int hasHead;
@@ -1113,6 +1134,16 @@ public class NewsBean {
 
         private int imgType;
 
+        private String url_3w;
+
+        public String getUrl_3w() {
+            return url_3w;
+        }
+
+        public void setUrl_3w(String url_3w) {
+            this.url_3w = url_3w;
+        }
+
         public int getImgType() {
             return imgType;
         }
@@ -1355,7 +1386,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class AdsBean {
+        public static class AdsBean implements Serializable{
             private String title;
             private String tag;
             private String imgsrc;
@@ -1403,7 +1434,7 @@ public class NewsBean {
             }
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -1416,7 +1447,7 @@ public class NewsBean {
         }
     }
 
-    public static class T1348649079062Bean {
+    public static class T1348649079062Bean implements Serializable{
         private String postid;
         private boolean hasCover;
         private int hasHead;
@@ -1465,6 +1496,16 @@ public class NewsBean {
 
         private int imgType;
 
+        private String url_3w;
+
+        public String getUrl_3w() {
+            return url_3w;
+        }
+
+        public void setUrl_3w(String url_3w) {
+            this.url_3w = url_3w;
+        }
+
         public int getImgType() {
             return imgType;
         }
@@ -1707,7 +1748,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class AdsBean {
+        public static class AdsBean implements Serializable{
             private String title;
             private String tag;
             private String imgsrc;
@@ -1755,7 +1796,7 @@ public class NewsBean {
             }
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -1768,7 +1809,7 @@ public class NewsBean {
         }
     }
 
-    public static class 推荐Bean {
+    public static class 推荐Bean implements Serializable{
         private int adtype;
         private int clkNum;
         private String docid;
@@ -1806,6 +1847,16 @@ public class NewsBean {
          */
         private List<ImgextraBean> imgextra;
 
+        private String url_3w;
+
+        public String getUrl_3w() {
+            return url_3w;
+        }
+
+        public void setUrl_3w(String url_3w) {
+            this.url_3w = url_3w;
+        }
+
         public List<ImgextraBean> getImgextra() {
             return imgextra;
         }
@@ -1814,7 +1865,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -2004,7 +2055,7 @@ public class NewsBean {
             this.dingyue = dingyue;
         }
 
-        public static class DingyueBean {
+        public static class DingyueBean implements Serializable{
             private String alias;
             private String ename;
             private int position;
@@ -2062,7 +2113,7 @@ public class NewsBean {
         }
     }
 
-    public static class 视频Bean {
+    public static class 视频Bean implements Serializable{
         private String cover;
         private String description;
         private int length;
@@ -2099,6 +2150,16 @@ public class NewsBean {
 
         private int imgType;
 
+        private String url_3w;
+
+        public String getUrl_3w() {
+            return url_3w;
+        }
+
+        public void setUrl_3w(String url_3w) {
+            this.url_3w = url_3w;
+        }
+
         public int getImgType() {
             return imgType;
         }
@@ -2115,7 +2176,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -2297,7 +2358,7 @@ public class NewsBean {
             this.videosource = videosource;
         }
 
-        public static class VideoTopicBean {
+        public static class VideoTopicBean implements Serializable{
             private String alias;
             private String ename;
             private String tid;
@@ -2337,7 +2398,7 @@ public class NewsBean {
         }
     }
 
-    public static class T1348648756099Bean {
+    public static class T1348648756099Bean implements Serializable{
         private String postid;
         private boolean hasCover;
         private int hasHead;
@@ -2385,6 +2446,16 @@ public class NewsBean {
 
         private int imgType;
 
+        private String skipID;
+
+        public String getSkipID() {
+            return skipID;
+        }
+
+        public void setSkipID(String skipID) {
+            this.skipID = skipID;
+        }
+
         public int getImgType() {
             return imgType;
         }
@@ -2409,7 +2480,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -2647,7 +2718,7 @@ public class NewsBean {
             this.ads = ads;
         }
 
-        public static class AdsBean {
+        public static class AdsBean implements Serializable{
             private String docid;
             private String title;
             private String tag;
@@ -2705,7 +2776,7 @@ public class NewsBean {
         }
     }
 
-    public static class T1348649580692Bean {
+    public static class T1348649580692Bean implements Serializable{
         private String postid;
         private boolean hasCover;
         private int hasHead;
@@ -2753,6 +2824,16 @@ public class NewsBean {
 
         private int imgType;
 
+        private String skipID;
+
+        public String getSkipID() {
+            return skipID;
+        }
+
+        public void setSkipID(String skipID) {
+            this.skipID = skipID;
+        }
+
         public int getImgType() {
             return imgType;
         }
@@ -2777,7 +2858,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -3015,7 +3096,7 @@ public class NewsBean {
             this.ads = ads;
         }
 
-        public static class AdsBean {
+        public static class AdsBean implements Serializable{
             private String docid;
             private String title;
             private String tag;
@@ -3073,7 +3154,7 @@ public class NewsBean {
         }
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable{
         private String postid;
         private boolean hasCover;
         private int hasHead;
@@ -3129,6 +3210,16 @@ public class NewsBean {
 
         private int imgType;
 
+        private String skipID;
+
+        public String getSkipID() {
+            return skipID;
+        }
+
+        public void setSkipID(String skipID) {
+            this.skipID = skipID;
+        }
+
         public int getImgType() {
             return imgType;
         }
@@ -3153,7 +3244,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -3399,7 +3490,7 @@ public class NewsBean {
             this.ads = ads;
         }
 
-        public static class AutoWapBean {
+        public static class AutoWapBean implements Serializable{
             private String title;
             private String imgsrc;
             private String subtitle;
@@ -3438,7 +3529,7 @@ public class NewsBean {
             }
         }
 
-        public static class AdsBean {
+        public static class AdsBean implements Serializable{
             private String docid;
             private String title;
             private String tag;
@@ -3496,7 +3587,7 @@ public class NewsBean {
         }
     }
 
-    public static class T1348650593803Bean {
+    public static class T1348650593803Bean implements Serializable{
         private String postid;
         private boolean hasCover;
         private int hasHead;
@@ -3553,6 +3644,16 @@ public class NewsBean {
         private String TAG;
 
         private int imgType;
+
+        private String url_3w;
+
+        public String getUrl_3w() {
+            return url_3w;
+        }
+
+        public void setUrl_3w(String url_3w) {
+            this.url_3w = url_3w;
+        }
 
         public int getImgType() {
             return imgType;
@@ -3804,7 +3905,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class WapPortalBean {
+        public static class WapPortalBean implements Serializable{
             private String title;
             private String subtitle;
             private String imgsrc;
@@ -3843,7 +3944,7 @@ public class NewsBean {
             }
         }
 
-        public static class AdsBean {
+        public static class AdsBean implements Serializable{
             private String docid;
             private String title;
             private String tag;
@@ -3900,7 +4001,7 @@ public class NewsBean {
             }
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {
@@ -3913,7 +4014,7 @@ public class NewsBean {
         }
     }
 
-    public static class PhotoBean {
+    public static class PhotoBean implements Serializable{
         private String desc;
         private String pvnum;
         private String createdate;
@@ -3938,6 +4039,16 @@ public class NewsBean {
 
         private int imgType;
 
+        private String url_3w;
+
+        public String getUrl_3w() {
+            return url_3w;
+        }
+
+        public void setUrl_3w(String url_3w) {
+            this.url_3w = url_3w;
+        }
+
         public int getImgType() {
             return imgType;
         }
@@ -3954,7 +4065,7 @@ public class NewsBean {
             this.imgextra = imgextra;
         }
 
-        public static class ImgextraBean {
+        public static class ImgextraBean implements Serializable{
             private String imgsrc;
 
             public String getImgsrc() {

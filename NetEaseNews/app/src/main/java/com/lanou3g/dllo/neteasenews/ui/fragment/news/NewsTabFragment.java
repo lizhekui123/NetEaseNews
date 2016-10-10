@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -20,6 +21,8 @@ import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
 import com.lanou3g.dllo.neteasenews.tools.ToastTool;
+import com.lanou3g.dllo.neteasenews.ui.activity.NewsInfoActivity;
+import com.lanou3g.dllo.neteasenews.ui.activity.NewsPhotoActivity;
 import com.lanou3g.dllo.neteasenews.ui.adapter.common.RotateVpAdapter;
 import com.lanou3g.dllo.neteasenews.ui.adapter.news.NewsListAdapter;
 import com.lanou3g.dllo.neteasenews.ui.fragment.AbsBaseFragment;
@@ -47,7 +50,7 @@ public class NewsTabFragment extends AbsBaseFragment {
     private NewsListAdapter adapter;
     private String strUrl;
 
-    int[] urlNums = {0,0,0,0,0,0,0,0};
+    int[] urlNums = {0, 0, 0, 0, 0, 0, 0, 0};
 
     public static NewsTabFragment newInstance(String url) {
         Bundle args = new Bundle();
@@ -71,6 +74,129 @@ public class NewsTabFragment extends AbsBaseFragment {
 
     @Override
     protected void initDatas() {
+
+        refreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                if (strUrl.equals(UrlValues.HEADLINENEWSURL)) {
+                    NewsBean.T1348647909107Bean bean = (NewsBean.T1348647909107Bean) adapter.getDatas().get(position - 1);
+                    if (bean.getSkipType()== null || !bean.getSkipType().equals("live")){
+                        if (bean.getSkipID() != null){
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsPhotoActivity.class, strUrl, bundle);
+                        } else {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsInfoActivity.class, strUrl, bundle);
+                        }
+                    }
+                } else if (strUrl.equals(UrlValues.SELECTEDNEWSURL)) {
+                    NewsBean.T1467284926140Bean bean = (NewsBean.T1467284926140Bean) adapter.getDatas().get(position - 1);
+                    if (bean.getSkipType()== null || !bean.getSkipType().equals("live")){
+                        if (bean.getUrl_3w() != null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsInfoActivity.class, strUrl, bundle);
+                        } else {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsPhotoActivity.class, strUrl, bundle);
+                        }
+                    }
+
+                } else if (strUrl.equals(UrlValues.ENTERTAINMENTNEWSURL)) {
+                    NewsBean.T1348648517839Bean bean = (NewsBean.T1348648517839Bean) adapter.getDatas().get(position - 1);
+                    if (bean.getSkipType()== null || !bean.getSkipType().equals("live")){
+                        if (bean.getUrl_3w() != null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsInfoActivity.class, strUrl, bundle);
+                        } else {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsPhotoActivity.class, strUrl, bundle);
+                        }
+                    }
+
+                } else if (strUrl.equals(UrlValues.SPORTSNEWSURL)) {
+                    NewsBean.T1348649079062Bean bean = (NewsBean.T1348649079062Bean) adapter.getDatas().get(position - 1);
+                    if (bean.getSkipType()== null || !bean.getSkipType().equals("live")){
+                        if (bean.getUrl_3w() != null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsInfoActivity.class, strUrl, bundle);
+                        } else {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsPhotoActivity.class, strUrl, bundle);
+                        }
+                    }
+
+                } else if (strUrl.equals(UrlValues.FINANCIALNEWSURL)) {
+                    NewsBean.T1348648756099Bean bean = (NewsBean.T1348648756099Bean) adapter.getDatas().get(position - 1);
+                    if (bean.getUrl_3w() != null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bean", bean);
+                        goTo(NewsInfoActivity.class, strUrl, bundle);
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bean", bean);
+                        goTo(NewsPhotoActivity.class, strUrl, bundle);
+                    }
+                } else if (strUrl.equals(UrlValues.TECHNEWSURL)) {
+                    NewsBean.T1348649580692Bean bean = (NewsBean.T1348649580692Bean) adapter.getDatas().get(position - 1);
+                    if (bean.getUrl_3w() != null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bean", bean);
+                        goTo(NewsInfoActivity.class, strUrl, bundle);
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bean", bean);
+                        goTo(NewsPhotoActivity.class, strUrl, bundle);
+                    }
+                } else if (strUrl.equals(UrlValues.AUTONEWSURL)) {
+                    NewsBean.ListBean bean = (NewsBean.ListBean) adapter.getDatas().get(position - 1);
+                    if (bean.getUrl_3w() != null) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bean", bean);
+                        goTo(NewsInfoActivity.class, strUrl, bundle);
+                    } else {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("bean", bean);
+                        goTo(NewsPhotoActivity.class, strUrl, bundle);
+                    }
+                } else if (strUrl.equals(UrlValues.FASHIONNEWSURL)) {
+                    NewsBean.T1348650593803Bean bean = (NewsBean.T1348650593803Bean) adapter.getDatas().get(position - 1);
+                    if (bean.getSkipType()== null || !bean.getSkipType().equals("live")){
+                        if (bean.getUrl_3w() != null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsInfoActivity.class, strUrl, bundle);
+                        } else {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsPhotoActivity.class, strUrl, bundle);
+                        }
+                    }
+
+                } else {
+                    NewsBean.T1348647909107Bean bean = (NewsBean.T1348647909107Bean) adapter.getDatas().get(position - 1);
+                    if (bean.getSkipType()== null || !bean.getSkipType().equals("live")){
+                        if (bean.getUrl_3w() != null) {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsInfoActivity.class, strUrl, bundle);
+                        } else {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("bean", bean);
+                            goTo(NewsPhotoActivity.class, strUrl, bundle);
+                        }
+                    }
+
+                }
+            }
+        });
 
         refreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
@@ -130,7 +256,7 @@ public class NewsTabFragment extends AbsBaseFragment {
                     final List<NewsBean.T1348647909107Bean> datas = adapter.getDatas();
                     if (urlNums[0] < 210) {
                         urlNums[0] = urlNums[0] + 10;
-                        String newUrl = "http://c.3g.163.com/recommend/getSubDocPic?tid=T1348647909107&from=toutiao&offset=" + urlNums[0] + "&size=10";
+                        String newUrl = "http://c.3g.163.com/recommend/getSubDocPic?tid=T1348647909107&from=toutiao&offset=" + urlNums[0] + "&size=10&fn=1&prog=LMA1";
                         VolleyInstance.getInstance().startRequest(newUrl, new VolleyResult() {
                             @Override
                             public void success(String resultStr) {
