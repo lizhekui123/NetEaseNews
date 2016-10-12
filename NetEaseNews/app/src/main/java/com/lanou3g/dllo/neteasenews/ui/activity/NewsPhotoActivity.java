@@ -17,9 +17,13 @@ import com.google.gson.Gson;
 import com.lanou3g.dllo.neteasenews.R;
 import com.lanou3g.dllo.neteasenews.model.bean.NewsBean;
 import com.lanou3g.dllo.neteasenews.model.bean.NewsPhotoBean;
+import com.lanou3g.dllo.neteasenews.model.db.CollectBean;
+import com.lanou3g.dllo.neteasenews.model.db.LiteOrmInstance;
+import com.lanou3g.dllo.neteasenews.model.db.UserInfoBean;
 import com.lanou3g.dllo.neteasenews.model.net.UrlValues;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyInstance;
 import com.lanou3g.dllo.neteasenews.model.net.VolleyResult;
+import com.lanou3g.dllo.neteasenews.tools.ShareTool;
 import com.lanou3g.dllo.neteasenews.tools.ToastTool;
 import com.lanou3g.dllo.neteasenews.ui.adapter.news.NewsPhotoVpAdapter;
 
@@ -37,8 +41,12 @@ public class NewsPhotoActivity extends AbsBaseActivity{
     private TextView titleTv;
     private TextView pageTv;
     private TextView bodyTv;
-    private String strUrl;
-    private String photoUrl;
+    private String username;
+    private String title;
+    private String fromUrl;
+    private String url;
+    private String userUrl;
+    private String content,shareUrl,imgUrl;
 
     private NewsPhotoVpAdapter adapter;
 
@@ -47,6 +55,9 @@ public class NewsPhotoActivity extends AbsBaseActivity{
     private LinearLayout collectLl;
     private ImageView collectIv;
     private TextView collectTv;
+
+    private boolean hasLogin;
+    private boolean hasCollected;
 
     @Override
     protected int setLayout() {
@@ -65,11 +76,150 @@ public class NewsPhotoActivity extends AbsBaseActivity{
 
     @Override
     protected void initDatas() {
-        Intent intent = getIntent();
-        strUrl = intent.getStringExtra("url");
-        Bundle bundle = intent.getExtras();
         adapter = new NewsPhotoVpAdapter(this);
         viewPager.setAdapter(adapter);
+        Intent intent = getIntent();
+        content = "图片新闻";
+        if (intent.getExtras().containsKey("bean")){
+            fromUrl = intent.getStringExtra("url");
+            Bundle bundle = intent.getExtras();
+            if (fromUrl.equals(UrlValues.HEADLINENEWSURL)) {
+                NewsBean.T1348647909107Bean bean = (NewsBean.T1348647909107Bean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            } else if (fromUrl.equals(UrlValues.SELECTEDNEWSURL)) {
+                NewsBean.T1467284926140Bean bean = (NewsBean.T1467284926140Bean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            } else if (fromUrl.equals(UrlValues.ENTERTAINMENTNEWSURL)) {
+                NewsBean.T1348648517839Bean bean = (NewsBean.T1348648517839Bean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            } else if (fromUrl.equals(UrlValues.SPORTSNEWSURL)) {
+                NewsBean.T1348649079062Bean bean = (NewsBean.T1348649079062Bean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            } else if (fromUrl.equals(UrlValues.FINANCIALNEWSURL)) {
+                NewsBean.T1348648756099Bean bean = (NewsBean.T1348648756099Bean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            } else if (fromUrl.equals(UrlValues.TECHNEWSURL)) {
+                NewsBean.T1348649580692Bean bean = (NewsBean.T1348649580692Bean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            } else if (fromUrl.equals(UrlValues.AUTONEWSURL)) {
+                NewsBean.ListBean bean = (NewsBean.ListBean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            } else if (fromUrl.equals(UrlValues.FASHIONNEWSURL)) {
+                NewsBean.T1348650593803Bean bean = (NewsBean.T1348650593803Bean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            } else {
+                NewsBean.T1348647909107Bean bean = (NewsBean.T1348647909107Bean) bundle.getSerializable("bean");
+                String skipID = bean.getSkipID();
+                String str1 = skipID.substring(4,8);
+                String str2 = skipID.substring(9);
+                title = bean.getTitle();
+                if(!bean.getDigest().isEmpty()){
+                    content = bean.getDigest();
+                } else {
+                    content = "来自网易新闻";
+                }
+                shareUrl = "http://c.m.163.com/news/p/" + str1 + "/" + str2 + ".html?spss=newsapp&spsw=1";
+                imgUrl = bean.getImgsrc();
+                url = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
+            }
+        } else if (intent.getExtras().containsKey("collectBean")){
+            Bundle bundle = intent.getExtras();
+            CollectBean cb = (CollectBean) bundle.getSerializable("collectBean");
+            title = cb.getTitle();
+            content = cb.getContent();
+            shareUrl = cb.getShareUrl();
+            fromUrl = cb.getFromUrl();
+            imgUrl = cb.getImgUrl();
+            url = cb.getUrl();
+        }
 
         moreIv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,62 +235,8 @@ public class NewsPhotoActivity extends AbsBaseActivity{
             }
         });
 
-        if (strUrl.equals(UrlValues.HEADLINENEWSURL)) {
-            NewsBean.T1348647909107Bean bean = (NewsBean.T1348647909107Bean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        } else if (strUrl.equals(UrlValues.SELECTEDNEWSURL)) {
-            NewsBean.T1467284926140Bean bean = (NewsBean.T1467284926140Bean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        } else if (strUrl.equals(UrlValues.ENTERTAINMENTNEWSURL)) {
-            NewsBean.T1348648517839Bean bean = (NewsBean.T1348648517839Bean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        } else if (strUrl.equals(UrlValues.SPORTSNEWSURL)) {
-            NewsBean.T1348649079062Bean bean = (NewsBean.T1348649079062Bean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        } else if (strUrl.equals(UrlValues.FINANCIALNEWSURL)) {
-            NewsBean.T1348648756099Bean bean = (NewsBean.T1348648756099Bean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        } else if (strUrl.equals(UrlValues.TECHNEWSURL)) {
-            NewsBean.T1348649580692Bean bean = (NewsBean.T1348649580692Bean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        } else if (strUrl.equals(UrlValues.AUTONEWSURL)) {
-            NewsBean.ListBean bean = (NewsBean.ListBean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        } else if (strUrl.equals(UrlValues.FASHIONNEWSURL)) {
-            NewsBean.T1348650593803Bean bean = (NewsBean.T1348650593803Bean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        } else {
-            NewsBean.T1348647909107Bean bean = (NewsBean.T1348647909107Bean) bundle.getSerializable("bean");
-            String skipID = bean.getSkipID();
-            String str1 = skipID.substring(4,8);
-            String str2 = skipID.substring(9);
-            photoUrl = "http://c.3g.163.com/photo/api/set/" + str1 + "/" + str2 + ".json";
-        }
-        VolleyInstance.getInstance().startRequest(photoUrl, new VolleyResult() {
+
+        VolleyInstance.getInstance().startRequest(url, new VolleyResult() {
             @Override
             public void success(String resultStr) {
                 Gson gson = new Gson();
@@ -192,11 +288,71 @@ public class NewsPhotoActivity extends AbsBaseActivity{
         collectIv = (ImageView) view.findViewById(R.id.item_news_info_pw_collect_iv);
         collectTv = (TextView) view.findViewById(R.id.item_news_info_pw_collect_tv);
 
+        shareLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareTool.showShare(title,content,shareUrl,imgUrl);
+            }
+        });
+
+
+        if (hasLogin){
+            userUrl = username + url;
+            List<CollectBean> cbs = LiteOrmInstance.getInstance().queryByUserUrl(userUrl);
+            if(cbs.size() > 0){
+                hasCollected = true;
+            } else {
+                hasCollected = false;
+            }
+        } else {
+            hasCollected = false;
+        }
+        if (hasCollected){
+            collectIv.setImageResource(R.mipmap.collect);
+            collectTv.setText("取消收藏");
+        } else {
+            collectIv.setImageResource(R.mipmap.no_collect);
+            collectTv.setText("收藏");
+        }
+        collectLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(hasLogin) {
+                    if (hasCollected){
+                        LiteOrmInstance.getInstance().deleteByUserUrl(userUrl);
+                        collectIv.setImageResource(R.mipmap.no_collect);
+                        collectTv.setText("收藏");
+                        ToastTool.shortMsg("已取消收藏");
+                    } else {
+                        CollectBean cb = new CollectBean(username,title,content,shareUrl,imgUrl,fromUrl,url,"photo",username + url);
+                        LiteOrmInstance.getInstance().insert(cb);
+                        collectIv.setImageResource(R.mipmap.collect);
+                        collectTv.setText("取消收藏");
+                        ToastTool.shortMsg("收藏成功");
+                    }
+                } else {
+                    ToastTool.shortMsg("您还没有登录");
+                }
+            }
+        });
+
         window.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
 
             }
         });
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        List<UserInfoBean> userList = LiteOrmInstance.getInstance().queryAllUser();
+        if (userList.size() > 0) {
+            UserInfoBean userInfoBean = userList.get(0);
+            username = userInfoBean.getUsername();
+            hasLogin = true;
+        } else {
+            hasLogin = false;
+        }
     }
 }

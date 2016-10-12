@@ -80,6 +80,12 @@ public abstract class AbsBaseFragment extends Fragment{
     /**
      * 跳转传值
      */
+    protected void goTo(Class<? extends AbsBaseActivity> to, String str){
+        Intent intent = new Intent(context, to);
+        intent.putExtra("String",str);
+        context.startActivity(intent);
+    }
+
     protected void goTo(Class<? extends AbsBaseActivity> to, Bundle extras){
         Intent intent = new Intent(context, to);
         intent.putExtras(extras);

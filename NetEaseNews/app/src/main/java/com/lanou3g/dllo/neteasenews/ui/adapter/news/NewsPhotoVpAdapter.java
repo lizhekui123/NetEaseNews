@@ -52,6 +52,7 @@ public class NewsPhotoVpAdapter extends PagerAdapter{
     public Object instantiateItem(ViewGroup container, int position) {
         View convertView = LayoutInflater.from(context).inflate(R.layout.item_rotate_vp,container,false);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.item_rotate_iv);
+        imageView.setAdjustViewBounds(true);
         Glide.with(context).load(datas.get(position).getImgurl()).into(imageView);
         container.addView(convertView);
         return convertView;

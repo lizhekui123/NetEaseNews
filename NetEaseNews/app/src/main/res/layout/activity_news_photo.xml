@@ -27,43 +27,50 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="10dp">
-        <ScrollView
-            android:id="@+id/news_photo_sv"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_height="100dp">
-            <TextView
-                android:id="@+id/news_photo_body_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_text_white"
-                android:text="内容"/>
-        </ScrollView>
-        <TextView
-            android:id="@+id/news_photo_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/color_text_white"
-            android:layout_margin="10dp"
-            android:text="标题"
-            android:layout_above="@id/news_photo_sv"/>
-        <TextView
-            android:id="@+id/news_photo_page_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/color_text_white"
-            android:layout_margin="10dp"
-            android:layout_above="@id/news_photo_sv"
-            android:text="数字"
-            android:layout_alignParentRight="true"/>
+        android:layout_weight="1">
         <android.support.v4.view.ViewPager
             android:id="@+id/news_photo_vp"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_above="@id/news_photo_title_tv"/>
+            android:layout_height="match_parent"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_alignParentBottom="true"
+            android:background="#55000000"
+            >
+            <ScrollView
+                android:id="@+id/news_photo_sv"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_height="100dp">
+                <TextView
+                    android:id="@+id/news_photo_body_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_text_white"/>
+            </ScrollView>
+            <TextView
+                android:id="@+id/news_photo_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_text_white"
+                android:layout_margin="10dp"
+                android:layout_above="@id/news_photo_sv"/>
+            <TextView
+                android:id="@+id/news_photo_page_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_text_white"
+                android:layout_margin="10dp"
+                android:layout_above="@id/news_photo_sv"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <!--<android.support.v4.view.ViewPager-->
+            <!--android:id="@+id/news_photo_vp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="300dp"-->
+            <!--android:layout_above="@id/news_photo_title_tv"/>-->
     </RelativeLayout>
 </LinearLayout>

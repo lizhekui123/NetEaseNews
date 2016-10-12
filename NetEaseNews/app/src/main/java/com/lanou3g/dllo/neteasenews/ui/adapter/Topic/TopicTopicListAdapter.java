@@ -167,16 +167,18 @@ public class TopicTopicListAdapter extends BaseAdapter {
                 TopicTpBean.DataBean.SubjectListBean textBean = (TopicTpBean.DataBean.SubjectListBean) datas.get(position);
                 Log.d("TopicTopicListAdapter", "textBean:" + textBean);
                 textHolder.textTitleTv.setText(StringTool.doTitleText(textBean.getName()));
-                String firstDpUrl = textBean.getTalkContent().get(0).getUserHeadPicUrl();
-                if (!firstDpUrl.isEmpty()){
-                    Picasso.with(context).load(firstDpUrl).into(textHolder.textFirstDpCiv);
+                if(textBean.getTalkContent().size()>0){
+                    String firstDpUrl = textBean.getTalkContent().get(0).getUserHeadPicUrl();
+                    if (!firstDpUrl.isEmpty()){
+                        Picasso.with(context).load(firstDpUrl).into(textHolder.textFirstDpCiv);
+                    }
+                    textHolder.textFirstContentTv.setText(textBean.getTalkContent().get(0).getContent());
+                    String secondDpUrl = textBean.getTalkContent().get(1).getUserHeadPicUrl();
+                    if (!secondDpUrl.isEmpty()){
+                        Picasso.with(context).load(secondDpUrl).into(textHolder.textSecondDpCiv);
+                    }
+                    textHolder.textSecondContentTv.setText(textBean.getTalkContent().get(1).getContent());
                 }
-                textHolder.textFirstContentTv.setText(textBean.getTalkContent().get(0).getContent());
-                String secondDpUrl = textBean.getTalkContent().get(1).getUserHeadPicUrl();
-                if (!secondDpUrl.isEmpty()){
-                    Picasso.with(context).load(secondDpUrl).into(textHolder.textSecondDpCiv);
-                }
-                textHolder.textSecondContentTv.setText(textBean.getTalkContent().get(1).getContent());
                 textHolder.textTypeTv.setText(textBean.getClassification());
                 textHolder.textFollowNumTv.setText(StringTool.doFollowNumText(textBean.getConcernCount()));
                 textHolder.textDiscussionNumTv.setText(StringTool.doDiscussionNumText(textBean.getTalkCount()));

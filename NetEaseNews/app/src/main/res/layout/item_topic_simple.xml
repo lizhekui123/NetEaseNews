@@ -55,6 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_title_tv"
+                    android:text="暂无数据"
                     android:layout_toRightOf="@id/first_double_quotation_marks_iv"/>
                 <ImageView
                     android:layout_width="wrap_content"
@@ -89,6 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_title_tv"
+                    android:text="暂无数据"
                     android:layout_toRightOf="@id/second_double_quotation_marks_iv"/>
                 <ImageView
                     android:layout_width="wrap_content"
